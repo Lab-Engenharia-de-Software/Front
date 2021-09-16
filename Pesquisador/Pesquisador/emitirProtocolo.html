@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boo -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Style CSS -->
     <link rel="stylesheet" href="emitirProtocolo.css">
+    
+    <!-- Multi Select Box Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" crossorigin="anonymous">
     
     <title> Pesquisador - Emitir Protocolo </title>
 </head>
@@ -41,29 +48,29 @@
                 <input type="date" class="form-control" min="" required>
             </div>
 
-            <div class="checkbox">
-                <div>
-                    <input type="checkbox" name="" id="bio-1">
-                    <label for="bio-1"> Biotério 1 </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="bio-2">
-                    <label for="bio-2"> Biotério 2 </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="bio-3">
-                    <label for="bio-3"> Biotério 3 </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="bio-4">
-                    <label for="bio-4"> Biotério 4 </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="bio-5">
-                    <label for="bio-5"> Biotério 5 </label>
-                </div>
-            </div>
+            <div class="container mt-5">
+                <label for="selectBox" class="lbl-selectBox"> Selecione a(s) espécie(s) </label>
+                <select class="selectpicker" id="selectBox" multiple aria-label="Default select example" data-live-search="true" required>
+                  <option value="esp1">Espécie 1</option>
+                  <option value="esp2">Espécie 2</option>
+                  <option value="esp3">Espécie 3</option>
+                  <option value="esp4">Espécie 4</option>
+                  <option value="esp5">Espécie 5</option>
+                </select>
+              </div>
             <div>
+            <div class="container mt-5">
+                <label for="selectBox" class="lbl-selectBox"> Selecione o(s) biotério(s) </label>
+                <select class="selectpicker" id="selectBox" multiple aria-label="Default select example" data-live-search="true" required>
+                  <option value="bio1">Biotério 1</option>
+                  <option value="bio2">Biotério 2</option>
+                  <option value="bio3">Biotério 3</option>
+                  <option value="bio4">Biotério 4</option>
+                  <option value="bio5">Biotério 5</option>
+                </select>
+              </div>
+            <div>
+            
                 <button type="submit" class="btn btn-primary" id="btn-submit"><i class="far fa-file-alt"></i>  Emitir Protocolo </button>
             </div>
           </form>
@@ -73,5 +80,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+
+    <!-- Multi Select Box Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 </body>
 </html>
