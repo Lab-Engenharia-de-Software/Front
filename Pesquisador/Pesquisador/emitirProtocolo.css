@@ -21,6 +21,7 @@ main{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #form{
+    width: 30%;
     background-color: rgb(208, 208, 208);
     border-radius: 20px;
     padding: 20px 30px 50px 30px;
