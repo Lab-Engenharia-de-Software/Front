@@ -48,21 +48,17 @@
     const senha = document.getElementById("ipt-senha").value;
     
     const obj = {
-      "email":"bolsomito2022",
-      "senha":"admin"
+      "email":email,
+      "senha":senha,
     }
-    console.log(JSON.stringify(obj))
-    
-    fetch('http://179.105.187.167:3333/login', {                             //ALTERAR NOME DO ARQUIVO E REALIZAR O TESTE
-      method: 'post',
-      body: JSON.stringify(obj),
-      mode:"no-cors",
 
-    }).then((response) => response.text())
-      .then((text) => console.log(text))
-      .catch((error) => console.error(error));
-
-  }
-
+  fetch('<url>/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(obj),
+})
+    .then((res) => res.text())
+    .then((data) => {console.log(data)})
+    .catch((err) => console.log(err));}
   </script>
 </html>
