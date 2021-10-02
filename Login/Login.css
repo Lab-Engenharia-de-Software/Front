@@ -1,15 +1,40 @@
+*{
+    user-select: none;
+    font-family: 'Calibri';
+}
 #Telalogin{
-    width: 450px;
+    width: 85%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+    background-color: rgb(208, 208, 208);
+    border-radius: 20px;
+    border: none;
+    padding: 20px 20px 40px 20px;
 }
-#Fundo{
-    background-image: url(/Front/Pesquisador/Pesquisador/Cauae.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
+.card-body{
+    padding: 0;
+}
+.title{
+    font-size: 2.3rem;
+    text-align: center;
+    margin: 20px 0 50px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+#btn-submit{
+    background-color: rgb(93, 44, 141);
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 100%;
+}
+#btn-submit:hover{
+    background-color: rgb(115, 70, 160);
+}
+@media screen and (min-width: 768px){
+    #Telalogin{
+        width: 25%;
+    }
 }
