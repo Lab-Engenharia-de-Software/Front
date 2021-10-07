@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#telaCadastro{
+    margin-top: 50%;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(208, 208, 208);
+    border-radius: 20px;
+    border: none;
+    padding: 20px 5px 40px 5px;
+}
+.card-body{
+    padding: 0;
+}
+.title{
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0 50px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+label{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#btn-cadastro{
+    background-color: rgb(93, 44, 141);
+    border: none;
+    outline: none;
+    color: #fff;
+    margin: 15px 0;
+    width: 100%;
+    font-size: 1.3rem;
+}
+
+#btn-cadastro:hover{
+    background-color: rgb(115, 70, 160);
+}
+@media screen and (min-width: 768px){
+    #telaCadastro{
+        margin-top: 5%;
+        width: 35%;
+        padding: 20px 20px 40px 20px;
+    }
+}

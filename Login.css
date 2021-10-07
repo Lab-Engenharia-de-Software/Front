@@ -26,6 +26,7 @@ label{
     font-size: 1.2rem;
 }
 #btn-submit{
+    margin-bottom: 20px;
     background-color: rgb(93, 44, 141);
     border: none;
     outline: none;
@@ -34,6 +35,17 @@ label{
     font-size: 1.3rem;
 }
 #btn-submit:hover{
+    background-color: rgb(115, 70, 160);
+}
+#btn-cadastro{
+    background-color: rgb(93, 44, 141);
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 100%;
+    font-size: 1.3rem;
+}
+#btn-cadastro:hover{
     background-color: rgb(115, 70, 160);
 }
 @media screen and (min-width: 768px){
