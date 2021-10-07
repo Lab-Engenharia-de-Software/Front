@@ -1,0 +1,45 @@
+<html lang="pt">
+<main>
+    <script>
+        if (localStorage.id != undefined) {
+
+        } else {
+            alert("Login necessário!")
+            window.location.href = "Login.html"
+        }
+    </script>
+
+
+    <body onLoad='hidden()'>
+        <row>
+            <h1>
+                <script>
+                    document.write(`Bem vindo, ${localStorage.nome}`)
+                </script>
+                <button type="button" onCLick="logout()" id="logout" style="font-size:20px;">Logout</button>
+                <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"style="font-size:20px;">Cadastrar Secretária</button>
+
+
+
+            </h1>
+        </row>
+    </body>
+</main>
+
+<script>
+    function hidden() {
+        if (localStorage.cargo != "admin") {
+            document.getElementById("cadastro-secretaria").style.visibility = "hidden";
+        }
+    }
+    function logout() {
+        localStorage.clear()
+        window.location.href = "Login.html"
+    }
+    function cadastroSecretaria() {
+        window.location.href = "Cadastro/Secretaria.html"
+
+    }
+</script>
+
+</html>
