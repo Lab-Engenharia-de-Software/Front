@@ -67,7 +67,7 @@
     .then((data) => user = data)
     .catch((err) => console.log(err));
 
-    if (user.id != undefined){
+    if (user.id != undefined & user.status != "invalido"){
     localStorage.setItem("id",user.id)
     localStorage.setItem("nome",user.nome)
     localStorage.setItem("email",user.email)
@@ -79,6 +79,8 @@
     }else if (user.status == "0"){
       console.log(user.status)
       alert("dados inválidos!")
+    } else{
+      alert("Usuário pendente de validação")
     }
     //localStorage.setItem("acesso",data.senha)) 
   }
