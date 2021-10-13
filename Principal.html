@@ -1,16 +1,17 @@
 <html lang="pt">
 <main>
     <script>
-        if (localStorage.id != undefined) {
-
-        } else {
+        if (localStorage.id == undefined) {
             alert("Login necessário!")
             window.location.href = "Login.html"
-        }
+        } 
     </script>
 
 
     <body onLoad='hidden()'>
+        <col>
+    
+        </col>
         <row>
             <h1>
                 <script>
@@ -18,11 +19,26 @@
                 </script>
                 <button type="button" onCLick="logout()" id="logout" style="font-size:20px;">Logout</button>
                 <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"style="font-size:20px;">Cadastrar Secretária</button>
-
-
-
             </h1>
         </row>
+        <h1>
+            <div>
+                <script>
+                    document.write(`Email: ${localStorage.email}`)
+                </script>
+            </div>
+            <div>
+                <script>
+                    document.write(`Cargo: ${localStorage.cargo}`)
+                </script>
+            </div>
+            <div>
+                <script>
+                    document.write(`Status: ${localStorage.status}`)
+                </script>
+            </div>
+        </h1>
+        
     </body>
 </main>
 
