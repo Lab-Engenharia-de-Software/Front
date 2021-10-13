@@ -23,7 +23,6 @@
                 Status: <h id="status"></h> 
                 <button type="button" onCLick="validar()" id="validar"style="font-size:20px;">VALIDAR USUÁRIO</button>
          
-                
             </div>
             <div>
                 Sexo: <h id="sexo"> 
@@ -41,19 +40,17 @@
         <br>
        <a id="status-text">Status do pesquisador:</a> 
         <div>
-            <button type="button" onCLick="promoverPesqusidor()" id="pesquisador"style="font-size:20px;">DEFINIR A PESQUISADOR</button>
+            <button type="button" onCLick="promoverPesquisador()" id="pesquisador"style="font-size:20px;">DEFINIR A PESQUISADOR</button>
         </div>
         <div>
             <button type="button" onCLick="promoverParecerista()" id="parecerista"style="font-size:20px;">DEFINIR A PARECERISTA</button>
         </div>
-        <div>
-            <button type="button" onCLick="promoverPresidente()" id="presidente"style="font-size:20px;">DEFINIR A PRESIDENTE</button>
-        </div>
         <div>   
             <button type="button" onCLick="excluir()" id="excluir"style="font-size:20px;">CANCELAR CADASTRO</button>
         </div>
-        
-        
+        <div>
+            <button type="button" onCLick="promoverPresidente()" id="presidente"style="font-size:20px;">DEFINIR A PRESIDENTE</button>
+        </div>
     </body>
     </h1>
 </main>
@@ -106,18 +103,16 @@
             document.getElementById("validar").style.visibility = "hidden";
         }
 
-        if(user.status == "parecerista"){
-            
-        }
-
         if (localStorage.cargo != "admin" && localStorage.cargo != "secretaria" ) {
             document.getElementById("validar").style.visibility = "hidden";
             document.getElementById("excluir").style.visibility = "hidden";
             document.getElementById("parecerista").style.visibility = "hidden";
-            document.getElementById("pesquisador").style.visibility = "hidden";
-            document.getElementById("presidente").style.visibility = "hidden";
+            document.getElementById("pesquisador").style.visibility = "hidden";   
             document.getElementById("status-text").style.visibility = "hidden";
-        } 
+        }
+        if(localStorage.cargo != "admin"){
+            document.getElementById("presidente").style.visibility = "hidden";
+        }
         //document.write(`Nome: ${user.nome}, email: ${user.email}, cargo: ${user.cargo}, status: ${user.status} `)  
     }
     async function validar(){
@@ -144,12 +139,85 @@
                 alert("erro")
             }
         }
+        async function promoverParecerista(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        //window.location.href = "Validate.html?id=" + id
+            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            method: 'PATCH',
+            headers: { 'Authorization': localStorage.cargo, "value":"parecerista" },
+            }) 
+            .then((res) => res.json())
+            .then((data) => user = data)
+            .catch((err) => console.log(err));
+
+            if(user.status == "2"){
+                document.getElementById("validar").style.visibility = "hidden";
+                alert("Usuário definido à parecerista!")
+                window.location.href = "Pesquisador.html?id="+ id
+            } else{
+                alert("erro")
+            }
+        }
+        async function promoverPesquisador(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        //window.location.href = "Validate.html?id=" + id
+            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            method: 'PATCH',
+            headers: { 'Authorization': localStorage.cargo, "value":"pesquisador" },
+            }) 
+            .then((res) => res.json())
+            .then((data) => user = data)
+            .catch((err) => console.log(err));
+
+            if(user.status == "2"){
+                document.getElementById("validar").style.visibility = "hidden";
+                alert("Usuário definido a pesquisador!")
+                window.location.href = "Pesquisador.html?id="+ id
+            } else{
+                alert("erro")
+            }
+        }
+        async function promoverPresidente(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        //window.location.href = "Validate.html?id=" + id
+            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            method: 'PATCH',
+            headers: { 'Authorization': localStorage.cargo, "value":"presidente" },
+            }) 
+            .then((res) => res.json())
+            .then((data) => user = data)
+            .catch((err) => console.log(err));
+
+            if(user.status == "2"){
+                document.getElementById("validar").style.visibility = "hidden";
+                alert("Usuário definido a presidente!")
+                window.location.href = "Pesquisador.html?id="+ id
+            } else{
+                alert("erro")
+            }
+        }
     function hidden() {
         //ativar perfil de usuário
         
     }
-    function excluir(){
+    async function excluir(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        obj = {"id":id}
 
+        await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            method: 'DELETE',
+            headers: { 'Authorization': localStorage.cargo },
+            body: JSON.stringify(obj)
+        })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+        alert("Cadastro do pesquisador cancelado!")
+        window.location.href = "Principal.html"
     }
 
     function logout() {
