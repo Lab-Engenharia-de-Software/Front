@@ -48,13 +48,10 @@
                     <th class="center">Cargo</th>
                     <th class="center">Status</th>
                 </thead>
-                <tbody id="tbody">
-
-                </tbody>
+                    <tbody id="tbody">
+                    </tbody>   
             </table>
-
-        </div>
-        
+        </div>    
     </body>
 </main>
 
@@ -111,24 +108,21 @@
         })
         for (let i = 0; i < pesquisadores.length; i++){
             let tr = tbody.insertRow();
-
-            if (pesquisadores[i].status == "invalido" & localStorage.cargo != "admin" & localStorage.cargo != "secretaria"){
-                console.log("sim")
-            }else{
-
+            if (pesquisadores[i].status != "invalido"){
                 let td_id = tr.insertCell();
                 let td_nome = tr.insertCell();
                 let td_email = tr.insertCell();
                 let td_cargo = tr.insertCell();
                 let td_status = tr.insertCell();
 
-                td_id.innerText = pesquisadores[i].id;
+                td_id.innerHTML = "<a href='Pesquisador.html?id="+pesquisadores[i].id+"'>"+pesquisadores[i].id;+"</a>";
                 td_nome.innerText = pesquisadores[i].nome;
                 td_email.innerText = pesquisadores[i].email;
                 td_cargo.innerText = pesquisadores[i].cargo;
                 td_status.innerText = pesquisadores[i].status;
-
-            }        
+                console.log("sim")
+            
+            }       
         }
 
         console.log(pesquisadores)
