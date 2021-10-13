@@ -22,6 +22,8 @@
             <div>
                 Status: <h id="status"></h> 
                 <button type="button" onCLick="validar()" id="validar"style="font-size:20px;">VALIDAR USUÁRIO</button>
+         
+                
             </div>
             <div>
                 Sexo: <h id="sexo"> 
@@ -35,7 +37,23 @@
             <div>
                 Endereço: <h id="endereco">
             </div>
-        </row> 
+        </row>
+        <br>
+       <a id="status-text">Status do pesquisador:</a> 
+        <div>
+            <button type="button" onCLick="promoverPesqusidor()" id="pesquisador"style="font-size:20px;">DEFINIR A PESQUISADOR</button>
+        </div>
+        <div>
+            <button type="button" onCLick="promoverParecerista()" id="parecerista"style="font-size:20px;">DEFINIR A PARECERISTA</button>
+        </div>
+        <div>
+            <button type="button" onCLick="promoverPresidente()" id="presidente"style="font-size:20px;">DEFINIR A PRESIDENTE</button>
+        </div>
+        <div>   
+            <button type="button" onCLick="excluir()" id="excluir"style="font-size:20px;">CANCELAR CADASTRO</button>
+        </div>
+        
+        
     </body>
     </h1>
 </main>
@@ -88,6 +106,18 @@
             document.getElementById("validar").style.visibility = "hidden";
         }
 
+        if(user.status == "parecerista"){
+            
+        }
+
+        if (localStorage.cargo != "admin" && localStorage.cargo != "secretaria" ) {
+            document.getElementById("validar").style.visibility = "hidden";
+            document.getElementById("excluir").style.visibility = "hidden";
+            document.getElementById("parecerista").style.visibility = "hidden";
+            document.getElementById("pesquisador").style.visibility = "hidden";
+            document.getElementById("presidente").style.visibility = "hidden";
+            document.getElementById("status-text").style.visibility = "hidden";
+        } 
         //document.write(`Nome: ${user.nome}, email: ${user.email}, cargo: ${user.cargo}, status: ${user.status} `)  
     }
     async function validar(){
@@ -116,10 +146,12 @@
         }
     function hidden() {
         //ativar perfil de usuário
-        if (localStorage.cargo != "admin" || localStorage.cargo != "secretaria" ) {
-            document.getElementById("validar").style.visibility = "hidden";
-        }
+        
     }
+    function excluir(){
+
+    }
+
     function logout() {
         localStorage.clear()
         window.location.href = "Login.html"
