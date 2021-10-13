@@ -7,7 +7,6 @@
         } 
     </script>
 
-
     <body onLoad='hidden()'>
         <col>
     
@@ -18,7 +17,6 @@
                     document.write(`Bem vindo, ${localStorage.nome}`)
                 </script>
                 <button type="button" onCLick="logout()" id="logout" style="font-size:20px;">Logout</button>
-                <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"style="font-size:20px;">Cadastrar Secretária</button>
             </h1>
         </row>
         <h1>
@@ -38,24 +36,104 @@
                 </script>
             </div>
         </h1>
+        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"style="font-size:20px;">Cadastrar Secretária</button>
+        <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"style="font-size:20px;">Emitir Protocolo</button>
+        <div class="content">
+            <p>Pesquisadores:</p>
+            <table border="1">
+                <thead>
+                    <th class="center">ID</th>
+                    <th class="center">Nome</th>
+                    <th class="center">email</th>
+                    <th class="center">Cargo</th>
+                    <th class="center">Status</th>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+
+        </div>
         
     </body>
 </main>
 
 <script>
+    class pesquisadores{
+        constructor(){
+            this.pesquisadores = []
+        }
+    }  
     function hidden() {
         if (localStorage.cargo != "admin") {
             document.getElementById("cadastro-secretaria").style.visibility = "hidden";
         }
+        if (localStorage.cargo == "secretaria") {
+            document.getElementById("emitir-protocolo").style.visibility = "hidden";
+        }
+        getPesquisadores();
+
     }
     function logout() {
         localStorage.clear()
         window.location.href = "Login.html"
     }
+    function emitirProtocolo(){
+        window.location.href = "Emissao/Protocolo.html"
+    }
     function cadastroSecretaria() {
         window.location.href = "Cadastro/Secretaria.html"
 
     }
+    async function getPesquisadores(){
+        var list = []
+        var pesquisadores = []
+        var presidentes = []
+        let tbody = document.getElementById("tbody")
+        let pesquisador = await fetch(`http://179.105.187.167:3333/Pesquisador/Lista`,{
+            method: 'GET',
+            headers: { 'Authorization': localStorage.cargo },
+        })
+        .then((res) => res.json())
+        .then((data) => list.push(data))
+        .catch((err) => console.log(err));
+        console.log(list[0].pesquisadores)
+        
+        
+        pesquisadores = list[0].pesquisadores.map((user) =>{
+            return{
+                id: user.id,
+                status: user.status,
+                cargo: user.role,
+                nome: user.nome,
+                email: user.email
+            }
+        })
+        for (let i = 0; i < pesquisadores.length; i++){
+            let tr = tbody.insertRow();
+
+            if (pesquisadores[i].status == "invalido" & localStorage.cargo != "admin" & localStorage.cargo != "secretaria"){
+                console.log("sim")
+            }else{
+
+                let td_id = tr.insertCell();
+                let td_nome = tr.insertCell();
+                let td_email = tr.insertCell();
+                let td_cargo = tr.insertCell();
+                let td_status = tr.insertCell();
+
+                td_id.innerText = pesquisadores[i].id;
+                td_nome.innerText = pesquisadores[i].nome;
+                td_email.innerText = pesquisadores[i].email;
+                td_cargo.innerText = pesquisadores[i].cargo;
+                td_status.innerText = pesquisadores[i].status;
+
+            }        
+        }
+
+        console.log(pesquisadores)
+    }   
+
 </script>
 
 </html>
