@@ -1,0 +1,56 @@
+<html lang="pt">
+<main>
+    <script>
+        if (localStorage.id == undefined) {
+            alert("Login necessário!")
+            window.location.href = "Login.html"
+        } 
+    </script>
+
+    
+    <div>
+        <body onLoad='getPesquisador()'>
+    </div>
+    asdasd
+     
+</main>
+
+<script>
+    var user = null
+    async function getPesquisador(){
+        console.log("PORR")
+        //pegar id do pesquisador pela url
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        const obj = {
+            'authorization': localStorage.cargo
+        }
+       
+        let account = await fetch(`http://179.105.187.167:3333/Pesquisador/user/${id}`,{
+            method: 'GET',
+            headers: { 'Authorization': localStorage.cargo },
+        })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+        //usar esse migué por enquanto
+        console.log(user)
+        document.write(`Nome: ${user.nome}, email: ${user.email}, cargo: ${user.cargo}, status: ${user.status} `)
+
+        
+    }
+    function hidden() {
+        //ativar perfil de usuário
+        if (localStorage.cargo != "admin" || localStorage.cargo != "secretaria" ) {
+            document.getElementById("cadastro-secretaria").style.visibility = "hidden";
+        }
+    }
+    function logout() {
+        localStorage.clear()
+        window.location.href = "Login.html"
+    }
+    function cadastroSecretaria() {
+        window.location.href = "Cadastro/Secretaria.html"
+    }
+</script>
+</html>
