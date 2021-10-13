@@ -4,15 +4,40 @@
         if (localStorage.id == undefined) {
             alert("Login necessário!")
             window.location.href = "Login.html"
-        } 
+        }
     </script>
-
-    
-    <div>
-        <body onLoad='getPesquisador()'>
-    </div>
-    asdasd
-     
+    <h1>
+    <header>DADOS DO PESQUISADOR</header>
+    <body onLoad='getPesquisador()'>
+        <row>
+            <div>
+                Nome: <h id="nome">
+            </div>
+            <div>
+                Email: <h id="email">
+            </div>
+            <div>
+                Cargo: <h id="cargo">
+            </div>
+            <div>
+                Status: <h id="status"></h> 
+                <button type="button" onCLick="validar()" id="validar"style="font-size:20px;">VALIDAR USUÁRIO</button>
+            </div>
+            <div>
+                Sexo: <h id="sexo">
+            </div>
+            <div>
+                Area: <h id="area">
+            </div>
+            <div>
+                Telefone: <h id="telefone">
+            </div>
+            <div>
+                Endereço: <h id="endereco">
+            </div>
+        </row> 
+    </body>
+    </h1>
 </main>
 
 <script>
@@ -33,16 +58,66 @@
         .then((res) => res.json())
         .then((data) => user = data)
         .catch((err) => console.log(err));
+
+        if (user.nome == undefined){
+            alert("Acesso negado!")
+            window.location.href = "Principal.html"
+        }
         //usar esse migué por enquanto
         console.log(user)
-        document.write(`Nome: ${user.nome}, email: ${user.email}, cargo: ${user.cargo}, status: ${user.status} `)
-
+        document.getElementById("nome").innerHTML = user.nome; 
+        document.getElementById("email").innerHTML = user.email; 
+        document.getElementById("cargo").innerHTML = user.cargo; 
+        document.getElementById("status").innerHTML = user.status;
+        document.getElementById("sexo").innerHTML = user.sexo;
+        document.getElementById("area").innerHTML = user.area;
+        document.getElementById("telefone").innerHTML = user.telefone;
+        document.getElementById("endereco").innerHTML = user.endereco;
+        if(user.cargo == "invalido"){
+            document.getElementById("cargo").innerHTML = "pesquisador"; 
+        }else{
+            document.getElementById("cargo").innerHTML = user.cargo
+        }   
         
+        if(user.status == "invalido" & localStorage.cargo == "pesquisador" || localStorage.cargo == "presidente"){
+            alert("Acesso negado!")
+            window.location.href = "Principal.html"
+        }
+
+        if (user.status != "invalido") {
+            document.getElementById("validar").style.visibility = "hidden";
+        }
+
+        //document.write(`Nome: ${user.nome}, email: ${user.email}, cargo: ${user.cargo}, status: ${user.status} `)  
     }
+    async function validar(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        //window.location.href = "Validate.html?id=" + id
+        const obj = {
+            "value":"ativar"
+            }
+            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            method: 'PATCH',
+            headers: { 'Authorization': localStorage.cargo, "value":"ativar" },
+            body: JSON.stringify(obj)
+            }) 
+            .then((res) => res.json())
+            .then((data) => user = data)
+            .catch((err) => console.log(err));
+
+            if(user.status == "2"){
+                document.getElementById("validar").style.visibility = "hidden";
+                alert("Cadastro de pesquisador concluído!")
+                window.location.href = "Pesquisador.html?id="+ id
+            } else{
+                alert("erro")
+            }
+        }
     function hidden() {
         //ativar perfil de usuário
         if (localStorage.cargo != "admin" || localStorage.cargo != "secretaria" ) {
-            document.getElementById("cadastro-secretaria").style.visibility = "hidden";
+            document.getElementById("validar").style.visibility = "hidden";
         }
     }
     function logout() {
