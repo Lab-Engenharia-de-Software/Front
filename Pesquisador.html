@@ -1,59 +1,52 @@
-<html lang="pt">
-<main>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pesquisador.css">
+    <title> Área do Pesquisador </title>
+</head>
+<body onLoad='getPesquisador()'>
     <script>
         if (localStorage.id == undefined) {
             alert("Login necessário!")
             window.location.href = "Login.html"
         }
     </script>
-    <h1>
-    <header>DADOS DO PESQUISADOR</header>
-    <body onLoad='getPesquisador()'>
-        <row>
-            <div>
-                Nome: <h id="nome">
-            </div>
-            <div>
-                Email: <h id="email">
-            </div>
-            <div>
-                Cargo: <h id="cargo">
-            </div>
-            <div>
+    <header><span> DADOS DO PESQUISADOR </span></header>
+    <main>
+        <div class="container">
+            <div class="nome"> Nome: <h id="nome"></div>
+            <div class="email"> Email: <h id="email"></div>
+            <div class="cargo">Cargo: <h id="cargo"></div>
+            <div class="sexo">Sexo: <h id="sexo"> </div>
+            <div class="area">Area: <h id="area"></div>
+            <div class="telefone">Telefone: <h id="telefone"></div>
+            <div class="endereco">Endereço: <h id="endereco"></div>
+            <div class="status">
                 Status: <h id="status"></h> 
-                <button type="button" onCLick="validar()" id="validar"style="font-size:20px;">VALIDAR USUÁRIO</button>
-         
+                <button type="button" onCLick="validar()" id="validar">VALIDAR USUÁRIO</button>
             </div>
-            <div>
-                Sexo: <h id="sexo"> 
+            <a id="status-text">Status do pesquisador:</a> 
+            <div class="wrapper">
+                <div>
+                    <button type="button" onCLick="promoverPesquisador()" id="pesquisador">DEFINIR A PESQUISADOR</button>
+                </div>
+                <div>
+                    <button type="button" onCLick="promoverParecerista()" id="parecerista">DEFINIR A PARECERISTA</button>
+                </div>
+                <div>   
+                    <button type="button" onCLick="excluir()" id="excluir">CANCELAR CADASTRO</button>
+                </div>
+                <div>
+                    <button type="button" onCLick="promoverPresidente()" id="presidente">DEFINIR A PRESIDENTE</button>
+                </div>
             </div>
-            <div>
-                Area: <h id="area">
-            </div>
-            <div>
-                Telefone: <h id="telefone">
-            </div>
-            <div>
-                Endereço: <h id="endereco">
-            </div>
-        </row>
-        <br>
-       <a id="status-text">Status do pesquisador:</a> 
-        <div>
-            <button type="button" onCLick="promoverPesquisador()" id="pesquisador"style="font-size:20px;">DEFINIR A PESQUISADOR</button>
-        </div>
-        <div>
-            <button type="button" onCLick="promoverParecerista()" id="parecerista"style="font-size:20px;">DEFINIR A PARECERISTA</button>
-        </div>
-        <div>   
-            <button type="button" onCLick="excluir()" id="excluir"style="font-size:20px;">CANCELAR CADASTRO</button>
-        </div>
-        <div>
-            <button type="button" onCLick="promoverPresidente()" id="presidente"style="font-size:20px;">DEFINIR A PRESIDENTE</button>
-        </div>
-    </body>
-    </h1>
-</main>
+        </div>    
+    </main>    
+</body>
+</html>
 
 <script>
     var user = null
