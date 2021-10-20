@@ -6,7 +6,7 @@
             window.location.href = "Login.html"
         } 
     </script>
-
+    
     <body onLoad='hidden()'>
         <col>
     
@@ -103,7 +103,7 @@
         var pesquisadores = []
         var presidentes = []
         let tbody = document.getElementById("tbody")
-        let pesquisador = await fetch(`http://179.105.187.167:3333/Pesquisador/Lista`,{
+        let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`,{
             method: 'GET',
             headers: { 'Authorization': localStorage.cargo },
         })
@@ -148,7 +148,7 @@
             let tbody2 = document.getElementById("tbody-atividades")
             let listAtividadesPesquisadores = []
             var listaSecretaria = []
-            await fetch(`http://179.105.187.167:3333/Secretaria/Atividades`,{
+            await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`,{
             method: 'GET',
             headers: { 'Authorization': localStorage.cargo },
             })

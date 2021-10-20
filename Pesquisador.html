@@ -59,7 +59,7 @@
             'authorization': localStorage.cargo
         }
        
-        let account = await fetch(`http://179.105.187.167:3333/Pesquisador/user/${id}`,{
+        let account = await fetch(`http://179.232.13.8:3333/Pesquisador/user/${id}`,{
             method: 'GET',
             headers: { 'Authorization': localStorage.cargo },
         })
@@ -115,7 +115,7 @@
         const obj = {
             "value":"ativar"
             }
-            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            await fetch(`http://179.232.13.8:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"ativar" },
             body: JSON.stringify(obj)
@@ -136,7 +136,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            await fetch(`http://179.232.13.8:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"parecerista" },
             }) 
@@ -156,7 +156,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            await fetch(`http://179.232.13.8:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"pesquisador" },
             }) 
@@ -176,7 +176,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+            await fetch(`http://179.232.13.8:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"presidente" },
             }) 
@@ -201,7 +201,7 @@
         var id = url.searchParams.get("id");
         obj = {"id":id}
 
-        await fetch(`http://179.105.187.167:3333/Pesquisador/${id}`,{
+        await fetch(`http://179.232.13.8:3333/Pesquisador/${id}`,{
             method: 'DELETE',
             headers: { 'Authorization': localStorage.cargo },
             body: JSON.stringify(obj)
