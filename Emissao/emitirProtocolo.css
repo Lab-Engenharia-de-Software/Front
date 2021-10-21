@@ -7,6 +7,22 @@
 label{
     cursor: pointer;
 }
+body{
+    /*IMAGEM APENAS PARA TESTAR O CONTRASTE COM O BUTÃO DE RETURN POIS A BOMBA DO BACKGROUND COLOR N TAVA FUNCIONANDO :/ */
+    background-image:url(/background.png);
+}
+#Return_Button{
+    background-image: url(/background-return.png);
+    position: absolute;
+    margin-bottom: 42%;
+    margin-right: 85%;
+    margin-top: 40px;
+}
+#Return{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 main{
     height: 100vh;
     display: flex;
