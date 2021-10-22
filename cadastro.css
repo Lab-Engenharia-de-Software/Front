@@ -4,8 +4,8 @@
 }
 body{
     background-color: rgba(33, 189, 64, 0.666) !important;
-
 }
+
 main{
     display: flex;
     align-items: center;
@@ -20,11 +20,19 @@ main{
 }
 .card-body{
     padding: 0;
+    position: relative;
+}
+.card-body i{
+    position: absolute;
+    top: 1%;
+    left: 3.5%;
+    color: rgb(115, 115, 115);
+    font-size: 1.6rem;
 }
 .title{
     font-size: 1.6rem;
     text-align: center;
-    margin: 20px 0 50px 0;
+    margin: 50px 0 50px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     user-select: none;
@@ -54,6 +62,11 @@ label{
         align-items: center;
         justify-content: center;
         height: 100vh;
+    }
+    .card-body i{
+        top: 0.5%;
+        left: 0.5%;
+        font-size: 2rem;
     }
     #telaCadastro{
         width: 80%;
