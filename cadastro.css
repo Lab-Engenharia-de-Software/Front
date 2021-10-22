@@ -2,35 +2,40 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: rgba(33, 189, 64, 0.666) !important;
 
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160vh;
+}
 #telaCadastro{
-    margin-top: 50%;
     width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(208, 208, 208);
+    background-color: #fff;
     border-radius: 20px;
     border: none;
-    padding: 20px 5px 40px 5px;
 }
 .card-body{
     padding: 0;
 }
 .title{
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: center;
     margin: 20px 0 50px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    user-select: none;
 }
 label{
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 #btn-cadastro{
-    background-color: rgb(93, 44, 141);
+    background-color: rgba(33, 189, 64, 0.666);
     border: none;
     outline: none;
     color: #fff;
@@ -40,12 +45,46 @@ label{
 }
 
 #btn-cadastro:hover{
-    background-color: rgb(115, 70, 160);
+    background-color: rgba(10, 226, 53, 0.666);
 }
+
 @media screen and (min-width: 768px){
+    main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
     #telaCadastro{
-        margin-top: 5%;
-        width: 35%;
+        width: 80%;
         padding: 20px 20px 40px 20px;
     }
+    .wrapper-content{
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+        align-items: center;
+    }
+    .card-body .title{
+        width: 100%;
+    }
+    .card-body .mb-3{
+        width: 20%;
+        margin: 20px;
+    }
+    .card-body input{
+        border: 1px solid rgb(0, 0, 0);
+    }
+    .card-body .wrapper-btn{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 50px 0 0 0;
+    }
+
+    #btn-cadastro{
+        width: 50%;
+    }
+    
 }

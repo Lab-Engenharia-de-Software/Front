@@ -16,52 +16,56 @@
     <form class="card" id="telaCadastro">
       <div class="card-body">
         <h1 class="title"> Cadastro de Pesquisador </h1>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-nome"> Nome: </label>
-          <input type="text" class="form-control" id="ipt-nome" name="nome" required placeholder="Insira o nome">
+        <div class="wrapper-content">
+          <div class="mb-3">
+            <label class="form-label" for="ipt-nome"> Nome: </label>
+            <input type="text" class="form-control" id="ipt-nome" name="nome" required placeholder="Insira o nome">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-cpf"> CPF: </label>
+            <input type="text" class="form-control" id="ipt-cpf" name="cpf" required placeholder="Insira o CPF">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-telefone"> Telefone: </label>
+            <input type="text" class="form-control" id="ipt-telefone" name="telefone" required
+              placeholder="(DDD) 9999-9999">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-endereco"> Endereço: </label>
+            <input type="text" class="form-control" id="ipt-endereco" name="endereco" required
+              placeholder="Insira o endereço">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-nascimento"> Data de nascimento: </label>
+            <input type="date" class="form-control" id="ipt-nascimento" name="nascimento" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-sexo"> Sexo: </label>
+            <input type="select" class="form-control" id="ipt-sexo" name="sexo" required placeholder="Insira o sexo">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="ipt-email">Email:</label>
+            <input type="email" class="form-control" id="ipt-email" name="email" aria-describedby="emailHelp" required
+              placeholder="Insira o email">
+          </div>
+          <div class="mb-3">
+            <label for="ipt-senha">Senha:</label>
+            <input type="password" class="form-control" name="senha" id="ipt-senha" required placeholder="Insira a senha">
+          </div>
+          <div class="mb-3">
+            <label for="ipt-confirmarSenha"> Confirmar Senha:</label>
+            <input type="password" class="form-control" name="confirmarSenha" id="ipt-confirmarSenha" required
+              placeholder="Confirme a senha">
+          </div>
+          <div class="mb-3">
+            <label for="interesse"> Área de pesquisa:</label>
+            <input type="text" class="form-control" name="ipt-area" id="ipt-area" required
+              placeholder="Insira sua área de estudo">
+          </div>
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-cpf"> CPF: </label>
-          <input type="text" class="form-control" id="ipt-cpf" name="cpf" required placeholder="Insira o CPF">
+        <div class="wrapper-btn">
+          <button type="button" onclick="cadastrar()" id="btn-cadastro" class="btn btn-outline-primary"> Cadastrar
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-telefone"> Telefone: </label>
-          <input type="text" class="form-control" id="ipt-telefone" name="telefone" required
-            placeholder="(DDD) 9999-9999">
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-endereco"> Endereço: </label>
-          <input type="text" class="form-control" id="ipt-endereco" name="endereco" required
-            placeholder="Insira o endereço">
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-nascimento"> Data de nascimento: </label>
-          <input type="date" class="form-control" id="ipt-nascimento" name="nascimento" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-sexo"> Sexo: </label>
-          <input type="select" class="form-control" id="ipt-sexo" name="sexo" required placeholder="Insira o sexo">
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="ipt-email">Email:</label>
-          <input type="email" class="form-control" id="ipt-email" name="email" aria-describedby="emailHelp" required
-            placeholder="Insira o email">
-        </div>
-        <div class="mb-3">
-          <label for="ipt-senha">Senha:</label>
-          <input type="password" class="form-control" name="senha" id="ipt-senha" required placeholder="Insira a senha">
-        </div>
-        <div class="mb-3">
-          <label for="ipt-confirmarSenha"> Confirmar Senha:</label>
-          <input type="password" class="form-control" name="confirmarSenha" id="ipt-confirmarSenha" required
-            placeholder="Confirme a senha">
-        </div>
-        <div class="mb-3">
-          <label for="interesse"> Área de pesquisa:</label>
-          <input type="text" class="form-control" name="ipt-area" id="ipt-area" required
-            placeholder="Insira sua área de estudo">
-        </div>
-        <button type="button" onclick="cadastrar()" id="btn-cadastro" class="btn btn-outline-primary"> Cadastrar
         </button>
       </div>
     </form>
