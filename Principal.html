@@ -1,43 +1,69 @@
-<html lang="pt">
-<main>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title> Área Principal </title>
     <script>
         if (localStorage.id == undefined) {
             alert("Login necessário!")
             window.location.href = "Login.html"
         } 
     </script>
-    
-    <body onLoad='hidden()'>
-        <col>
-    
-        </col>
-        <row>
-            <h1>
-                <script>
-                    document.write(`Bem vindo, ${localStorage.nome}`)
-                </script>
-                <button type="button" onCLick="logout()" id="logout" style="font-size:20px;">Logout</button>
-            </h1>
-        </row>
+</head>
+
+<body onLoad='hidden()'>
+    <main>
+        <header>
+            <div>
+                <script> document.write(`Bem vindo, ${localStorage.nome}`)</script>
+            </div>
+            <div class="img-profile">
+                <input type="checkbox" id="check-profile">
+                <label for="check-profile">
+                    <img src="img/person-profile.png" onclick="showOptions()" alt="Profile">
+                </label>
+                <ul id="profile-options">
+                    <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
+                    <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
+                    <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
+                    <!-- <button type="button" onCLick="logout()" id="logout" style="font-size:10px;">Logout</button> -->
+                </ul>
+            </div>
+        </header>
+        <script>
+            function showOptions(){
+                const profOptions = document.getElementById('profile-options');
+                const checkbox = document.getElementById('check-profile');
+                if(checkbox.checked){
+                    profOptions.style.display = 'none';
+                }else{
+                    profOptions.style.display = 'block';
+                }
+            }
+        </script>
+        <h1>
+        </h1>
+
         <h1>
             <div>
-                <script>
-                    document.write(`Email: ${localStorage.email}`)
-                </script>
+                <script> document.write(`Email: ${localStorage.email}`)</script>
             </div>
             <div>
-                <script>
-                    document.write(`Cargo: ${localStorage.cargo}`)
-                </script>
+                <script> document.write(`Cargo: ${localStorage.cargo}`)</script>
             </div>
             <div>
-                <script>
-                    document.write(`Status: ${localStorage.status}`)
-                </script>
+                <script> document.write(`Status: ${localStorage.status}`)</script>
             </div>
         </h1>
-        <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"style="font-size:20px;">Emitir Protocolo</button>
-        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"style="font-size:20px;">Cadastrar Secretária</button>
+        <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo" style="font-size:20px;">Emitir
+            Protocolo</button>
+        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria" style="font-size:20px;">Cadastrar
+            Secretária</button>
         <div class="content">
             <p>Tarefas:</p>
             <table border="1" id="tabela-atividades">
@@ -47,10 +73,10 @@
                     <th class="center">Status</th>
                     <th class="center">Link</th>
                 </thead>
-                    <tbody id="tbody-atividades">
-                    </tbody>   
+                <tbody id="tbody-atividades">
+                </tbody>
             </table>
-        </div>    
+        </div>
         <div class="content">
             <p>Pesquisadores Cadastrados:</p>
             <table border="1">
@@ -61,19 +87,22 @@
                     <th class="center">Cargo</th>
                     <th class="center">Status</th>
                 </thead>
-                    <tbody id="tbody">
-                    </tbody>   
+                <tbody id="tbody">
+                </tbody>
             </table>
-        </div>    
-    </body>
-</main>
+        </div>
+
+    </main>
+</body>
+
+</html>
 
 <script>
-    class pesquisadores{
-        constructor(){
+    class pesquisadores {
+        constructor() {
             this.pesquisadores = []
         }
-    }  
+    }
     function hidden() {
         if (localStorage.cargo != "admin") {
             document.getElementById("cadastro-secretaria").style.visibility = "hidden";
@@ -84,37 +113,37 @@
         getPesquisadores();
         getAtividades();
 
-        
+
 
     }
     function logout() {
         localStorage.clear()
         window.location.href = "Login.html"
     }
-    function emitirProtocolo(){
+    function emitirProtocolo() {
         window.location.href = "Emissao/Protocolo.html"
     }
     function cadastroSecretaria() {
         window.location.href = "Cadastro/Secretaria.html"
 
     }
-    async function getPesquisadores(){
+    async function getPesquisadores() {
         var list = []
         var pesquisadores = []
         var presidentes = []
         let tbody = document.getElementById("tbody")
-        let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`,{
+        let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`, {
             method: 'GET',
             headers: { 'Authorization': localStorage.cargo },
         })
-        .then((res) => res.json())
-        .then((data) => list.push(data))
-        .catch((err) => console.log(err));
+            .then((res) => res.json())
+            .then((data) => list.push(data))
+            .catch((err) => console.log(err));
         console.log(list[0].pesquisadores)
-        
-        
-        pesquisadores = list[0].pesquisadores.map((user) =>{
-            return{
+
+
+        pesquisadores = list[0].pesquisadores.map((user) => {
+            return {
                 id: user.id,
                 status: user.status,
                 cargo: user.role,
@@ -122,68 +151,68 @@
                 email: user.email
             }
         })
-        for (let i = 0; i < pesquisadores.length; i++){
+        for (let i = 0; i < pesquisadores.length; i++) {
             let tr = tbody.insertRow();
-            if (pesquisadores[i].status != "invalido"){
+            if (pesquisadores[i].status != "invalido") {
                 let td_id = tr.insertCell();
                 let td_nome = tr.insertCell();
                 let td_email = tr.insertCell();
                 let td_cargo = tr.insertCell();
                 let td_status = tr.insertCell();
 
-                td_id.innerHTML = "<a href='Pesquisador.html?id="+pesquisadores[i].id+"'>"+pesquisadores[i].id;+"</a>";
+                td_id.innerHTML = "<a href='Pesquisador.html?id=" + pesquisadores[i].id + "'>" + pesquisadores[i].id; +"</a>";
                 td_nome.innerText = pesquisadores[i].nome;
                 td_email.innerText = pesquisadores[i].email;
                 td_cargo.innerText = pesquisadores[i].cargo;
                 td_status.innerText = pesquisadores[i].status;
                 console.log("sim")
-            
-            }       
+
+            }
         }
 
         console.log(pesquisadores)
     }
-    async function getAtividades(){
-        if(localStorage.cargo == "secretaria" || localStorage.cargo == "admin"  ){
+    async function getAtividades() {
+        if (localStorage.cargo == "secretaria" || localStorage.cargo == "admin") {
             let tbody2 = document.getElementById("tbody-atividades")
             let listAtividadesPesquisadores = []
             var listaSecretaria = []
-            await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`,{
-            method: 'GET',
-            headers: { 'Authorization': localStorage.cargo },
+            await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`, {
+                method: 'GET',
+                headers: { 'Authorization': localStorage.cargo },
             })
-            .then((res) => res.json())
-            .then((data) => listAtividadesPesquisadores.push(data))
-            .catch((err) => console.log(err));
+                .then((res) => res.json())
+                .then((data) => listAtividadesPesquisadores.push(data))
+                .catch((err) => console.log(err));
 
-            listaSecretaria = listAtividadesPesquisadores[0].pesquisadores.map((user) =>{
-            return{
-                id: user.id,
-                status: user.status,
-                cargo: user.role,
-                nome: user.nome,
-                email: user.email
+            listaSecretaria = listAtividadesPesquisadores[0].pesquisadores.map((user) => {
+                return {
+                    id: user.id,
+                    status: user.status,
+                    cargo: user.role,
+                    nome: user.nome,
+                    email: user.email
+                }
+            })
+
+            for (let i = 0; i < listaSecretaria.length; i++) {
+                if (listaSecretaria[i].id != "1") {
+                    let tr = tbody2.insertRow();
+                    let td_tarefa = tr.insertCell();
+                    let td_nome = tr.insertCell();
+                    let td_status = tr.insertCell();
+                    let td_link = tr.insertCell();
+
+
+
+                    td_tarefa.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + "Validar cadastro" + "</a>";
+                    td_link.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + listaSecretaria[i].email; +"</a>";
+                    td_nome.innerText = listaSecretaria[i].nome;
+                    td_status.innerText = listaSecretaria[i].status;
+                    console.log("sim")
+                }
+
             }
-        })
-        
-        for (let i = 0; i < listaSecretaria.length; i++){
-            if(listaSecretaria[i].id != "1"){
-                let tr = tbody2.insertRow();
-                let td_tarefa = tr.insertCell();
-                let td_nome = tr.insertCell();
-                let td_status = tr.insertCell();
-                let td_link = tr.insertCell();
-                
-
-
-                td_tarefa.innerHTML = "<a href='Pesquisador.html?id="+listaSecretaria[i].id+"'>"+"Validar cadastro"+"</a>";
-                td_link.innerHTML = "<a href='Pesquisador.html?id="+listaSecretaria[i].id+"'>"+listaSecretaria[i].email;+"</a>";
-                td_nome.innerText = listaSecretaria[i].nome;
-                td_status.innerText =listaSecretaria[i].status;
-                console.log("sim")
-            }
-            
-        }
 
         }
 
