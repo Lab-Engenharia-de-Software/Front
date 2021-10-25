@@ -46,21 +46,20 @@
                 }
             }
         </script>
-        <h1>
-        </h1>
-
-        <h1>
-            <div>
-                <script> document.write(`Email: ${localStorage.email}`)</script>
+        <div class="container">
+            <div class="email">
+                <p> <script> document.write(`Email: ${localStorage.email}`)</script> </p>
             </div>
-            <div>
-                <script> document.write(`Cargo: ${localStorage.cargo}`)</script>
+            <div class="cargo">
+                <p> <script> document.write(`Cargo: ${localStorage.cargo}`)</script> </p>
             </div>
-            <div>
-                <script> document.write(`Status: ${localStorage.status}`)</script>
+            <div class="status">
+                <p> <script> document.write(`Status: ${localStorage.status}`)</script> </p>
             </div>
-        </h1>
-        <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo" style="font-size:20px;">Emitir
+        </div>
+        <div class="btn">
+            <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo">Emitir
+        </div>
             Protocolo</button>
         <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria" style="font-size:20px;">Cadastrar
             Secretária</button>

@@ -28,12 +28,13 @@ header{
     position: absolute;
     cursor: pointer;
     bottom: -180%;
-    right: -20px;
+    right: -5px;
     background-color: rgb(213, 212, 212);
     width: 130px;
     list-style: none;
     display: none;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.483);
+    border-radius: 8px;
 }
 input:checked ~ label > img{
     transition: .3s;
@@ -45,7 +46,7 @@ input:checked ~ label > img{
     font-size: 0.8rem;
     color: #000;
     padding: 10px 10px; 
-    border-bottom: 1px solid rgb(189, 189, 189);
+    border-top: 1px solid rgb(189, 189, 189);
 }
 #profile-options li:hover{
     transition: .5s;
@@ -55,7 +56,46 @@ input:checked ~ label > img{
 #profile-options i{
     margin-right: 5px;
 }
-
+ .container{
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    margin: 20px;
+}
+.container div{
+    margin: 10px 0;
+} 
+ .container .email{
+    width: 100%;
+} 
+ .container .cargo{
+    width: 60%;
+} 
+ .container .status{
+    width: 35%;
+} 
+.btn{
+    margin: 50px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn button{
+    font-size: 1.1rem !important;
+    color: #fff;
+    font-weight: bold;
+    width: 80%;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(33, 189, 64, 0.666);
+}
+div{
+    /* border: 2px solid red; */
+}
 @media screen and (min-width: 768px){
     header{
         padding: 15px 0;
