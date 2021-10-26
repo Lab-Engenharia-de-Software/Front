@@ -30,22 +30,10 @@
                 <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
                 <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
                 <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
-                <!-- <button type="button" onCLick="logout()" id="logout" style="font-size:10px;">Logout</button> -->
             </ul>
         </div>
     </header>
     <main>
-        <script>
-            function showOptions(){
-                const profOptions = document.getElementById('profile-options');
-                const checkbox = document.getElementById('check-profile');
-                if(checkbox.checked){
-                    profOptions.style.display = 'none';
-                }else{
-                    profOptions.style.display = 'block';
-                }
-            }
-        </script>
         <section class="container">
             <div class="email">
                 <p> <script> document.write(`Email: ${localStorage.email}`)</script> </p>
@@ -58,9 +46,9 @@
             </div>
             <div class="btn">
                 <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"> Emitir Protocolo </button>
+                <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"> Cadastrar Secretária </button>
             </div>
         </section>
-        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria" style="font-size:20px;"> Cadastrar Secretária </button>
         <div class="content">
             <p>Tarefas:</p>
             <table border="1" id="tabela-atividades">
@@ -90,99 +78,63 @@
         </div>
 
     </main>
-</body>
-
-</html>
-
-<script>
-    class pesquisadores {
-        constructor() {
-            this.pesquisadores = []
-        }
-    }
-    function hidden() {
-        if (localStorage.cargo != "admin") {
-            document.getElementById("cadastro-secretaria").style.visibility = "hidden";
-        }
-        if (localStorage.cargo == "secretaria") {
-            document.getElementById("emitir-protocolo").style.visibility = "hidden";
-        }
-        getPesquisadores();
-        getAtividades();
-
-
-
-    }
-    function logout() {
-        localStorage.clear()
-        window.location.href = "Login.html"
-    }
-    function emitirProtocolo() {
-        window.location.href = "Emissao/Protocolo.html"
-    }
-    function cadastroSecretaria() {
-        window.location.href = "Cadastro/Secretaria.html"
-
-    }
-    async function getPesquisadores() {
-        var list = []
-        var pesquisadores = []
-        var presidentes = []
-        let tbody = document.getElementById("tbody")
-        let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`, {
-            method: 'GET',
-            headers: { 'Authorization': localStorage.cargo },
-        })
-            .then((res) => res.json())
-            .then((data) => list.push(data))
-            .catch((err) => console.log(err));
-        console.log(list[0].pesquisadores)
-
-
-        pesquisadores = list[0].pesquisadores.map((user) => {
-            return {
-                id: user.id,
-                status: user.status,
-                cargo: user.role,
-                nome: user.nome,
-                email: user.email
-            }
-        })
-        for (let i = 0; i < pesquisadores.length; i++) {
-            let tr = tbody.insertRow();
-            if (pesquisadores[i].status != "invalido") {
-                let td_id = tr.insertCell();
-                let td_nome = tr.insertCell();
-                let td_email = tr.insertCell();
-                let td_cargo = tr.insertCell();
-                let td_status = tr.insertCell();
-
-                td_id.innerHTML = "<a href='Pesquisador.html?id=" + pesquisadores[i].id + "'>" + pesquisadores[i].id; +"</a>";
-                td_nome.innerText = pesquisadores[i].nome;
-                td_email.innerText = pesquisadores[i].email;
-                td_cargo.innerText = pesquisadores[i].cargo;
-                td_status.innerText = pesquisadores[i].status;
-                console.log("sim")
-
+    <script>
+        function showOptions(){
+            const profOptions = document.getElementById('profile-options');
+            const checkbox = document.getElementById('check-profile');
+            if(checkbox.checked){
+                profOptions.style.display = 'none';
+            }else{
+                profOptions.style.display = 'block';
             }
         }
-
-        console.log(pesquisadores)
-    }
-    async function getAtividades() {
-        if (localStorage.cargo == "secretaria" || localStorage.cargo == "admin") {
-            let tbody2 = document.getElementById("tbody-atividades")
-            let listAtividadesPesquisadores = []
-            var listaSecretaria = []
-            await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`, {
+    </script>
+    <script>
+        class pesquisadores {
+            constructor() {
+                this.pesquisadores = []
+            }
+        }
+        function hidden() {
+            if (localStorage.cargo != "admin") {
+                document.getElementById("cadastro-secretaria").style.visibility = "hidden";
+            }
+            if (localStorage.cargo == "secretaria") {
+                document.getElementById("emitir-protocolo").style.visibility = "hidden";
+            }
+            getPesquisadores();
+            getAtividades();
+    
+    
+    
+        }
+        function logout() {
+            localStorage.clear()
+            window.location.href = "Login.html"
+        }
+        function emitirProtocolo() {
+            window.location.href = "Emissao/Protocolo.html"
+        }
+        function cadastroSecretaria() {
+            window.location.href = "Cadastro/Secretaria.html"
+    
+        }
+        async function getPesquisadores() {
+            var list = []
+            var pesquisadores = []
+            var presidentes = []
+            let tbody = document.getElementById("tbody")
+            let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`, {
                 method: 'GET',
                 headers: { 'Authorization': localStorage.cargo },
             })
                 .then((res) => res.json())
-                .then((data) => listAtividadesPesquisadores.push(data))
+                .then((data) => list.push(data))
                 .catch((err) => console.log(err));
-
-            listaSecretaria = listAtividadesPesquisadores[0].pesquisadores.map((user) => {
+            console.log(list[0].pesquisadores)
+    
+    
+            pesquisadores = list[0].pesquisadores.map((user) => {
                 return {
                     id: user.id,
                     status: user.status,
@@ -191,31 +143,73 @@
                     email: user.email
                 }
             })
-
-            for (let i = 0; i < listaSecretaria.length; i++) {
-                if (listaSecretaria[i].id != "1") {
-                    let tr = tbody2.insertRow();
-                    let td_tarefa = tr.insertCell();
+            for (let i = 0; i < pesquisadores.length; i++) {
+                let tr = tbody.insertRow();
+                if (pesquisadores[i].status != "invalido") {
+                    let td_id = tr.insertCell();
                     let td_nome = tr.insertCell();
+                    let td_email = tr.insertCell();
+                    let td_cargo = tr.insertCell();
                     let td_status = tr.insertCell();
-                    let td_link = tr.insertCell();
-
-
-
-                    td_tarefa.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + "Validar cadastro" + "</a>";
-                    td_link.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + listaSecretaria[i].email; +"</a>";
-                    td_nome.innerText = listaSecretaria[i].nome;
-                    td_status.innerText = listaSecretaria[i].status;
+    
+                    td_id.innerHTML = "<a href='Pesquisador.html?id=" + pesquisadores[i].id + "'>" + pesquisadores[i].id; +"</a>";
+                    td_nome.innerText = pesquisadores[i].nome;
+                    td_email.innerText = pesquisadores[i].email;
+                    td_cargo.innerText = pesquisadores[i].cargo;
+                    td_status.innerText = pesquisadores[i].status;
                     console.log("sim")
+    
                 }
-
             }
-
+    
+            console.log(pesquisadores)
         }
-
-    }
-
-
-</script>
-
+        async function getAtividades() {
+            if (localStorage.cargo == "secretaria" || localStorage.cargo == "admin") {
+                let tbody2 = document.getElementById("tbody-atividades")
+                let listAtividadesPesquisadores = []
+                var listaSecretaria = []
+                await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`, {
+                    method: 'GET',
+                    headers: { 'Authorization': localStorage.cargo },
+                })
+                    .then((res) => res.json())
+                    .then((data) => listAtividadesPesquisadores.push(data))
+                    .catch((err) => console.log(err));
+    
+                listaSecretaria = listAtividadesPesquisadores[0].pesquisadores.map((user) => {
+                    return {
+                        id: user.id,
+                        status: user.status,
+                        cargo: user.role,
+                        nome: user.nome,
+                        email: user.email
+                    }
+                })
+    
+                for (let i = 0; i < listaSecretaria.length; i++) {
+                    if (listaSecretaria[i].id != "1") {
+                        let tr = tbody2.insertRow();
+                        let td_tarefa = tr.insertCell();
+                        let td_nome = tr.insertCell();
+                        let td_status = tr.insertCell();
+                        let td_link = tr.insertCell();
+    
+    
+    
+                        td_tarefa.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + "Validar cadastro" + "</a>";
+                        td_link.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + listaSecretaria[i].email; +"</a>";
+                        td_nome.innerText = listaSecretaria[i].nome;
+                        td_status.innerText = listaSecretaria[i].status;
+                        console.log("sim")
+                    }
+    
+                }
+    
+            }
+    
+        }
+    
+    </script>
+</body>
 </html>
