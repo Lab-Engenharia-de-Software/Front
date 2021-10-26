@@ -17,24 +17,24 @@
 </head>
 
 <body onLoad='hidden()'>
+    <header>
+        <div style="font-weight: bold; color: #fff;">
+            <script> document.write(`Bem vindo, ${localStorage.nome}!`)</script>
+        </div>
+        <div class="img-profile">
+            <input type="checkbox" id="check-profile">
+            <label for="check-profile">
+                <img src="img/person-profile.png" onclick="showOptions()" alt="Profile">
+            </label>
+            <ul id="profile-options">
+                <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
+                <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
+                <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
+                <!-- <button type="button" onCLick="logout()" id="logout" style="font-size:10px;">Logout</button> -->
+            </ul>
+        </div>
+    </header>
     <main>
-        <header>
-            <div>
-                <script> document.write(`Bem vindo, ${localStorage.nome}`)</script>
-            </div>
-            <div class="img-profile">
-                <input type="checkbox" id="check-profile">
-                <label for="check-profile">
-                    <img src="img/person-profile.png" onclick="showOptions()" alt="Profile">
-                </label>
-                <ul id="profile-options">
-                    <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
-                    <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
-                    <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
-                    <!-- <button type="button" onCLick="logout()" id="logout" style="font-size:10px;">Logout</button> -->
-                </ul>
-            </div>
-        </header>
         <script>
             function showOptions(){
                 const profOptions = document.getElementById('profile-options');
@@ -46,7 +46,7 @@
                 }
             }
         </script>
-        <div class="container">
+        <section class="container">
             <div class="email">
                 <p> <script> document.write(`Email: ${localStorage.email}`)</script> </p>
             </div>
@@ -56,13 +56,11 @@
             <div class="status">
                 <p> <script> document.write(`Status: ${localStorage.status}`)</script> </p>
             </div>
-        </div>
-        <div class="btn">
-            <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo">Emitir
-        </div>
-            Protocolo</button>
-        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria" style="font-size:20px;">Cadastrar
-            Secretária</button>
+            <div class="btn">
+                <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"> Emitir Protocolo </button>
+            </div>
+        </section>
+        <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria" style="font-size:20px;"> Cadastrar Secretária </button>
         <div class="content">
             <p>Tarefas:</p>
             <table border="1" id="tabela-atividades">

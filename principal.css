@@ -37,9 +37,8 @@ header{
     border-radius: 8px;
 }
 input:checked ~ label > img{
-    transition: .3s;
+    transition: .5s;
     border: 3px solid rgb(214, 11, 11);
-    /* z-index: 5; */
 }
 #profile-options li{
     font-family: sans-serif;
@@ -57,10 +56,13 @@ input:checked ~ label > img{
     margin-right: 5px;
 }
  .container{
+    background-color: rgba(223, 191, 191, 0.245);
+    padding: 2% 3%;
     display: flex;
     align-items: center;
     flex-flow: wrap;
     margin: 20px;
+    font-size: 1.1rem;
 }
 .container div{
     margin: 10px 0;
@@ -69,31 +71,37 @@ input:checked ~ label > img{
     width: 100%;
 } 
  .container .cargo{
-    width: 60%;
+    width: 55%;
 } 
  .container .status{
-    width: 35%;
+    width: 40%;
 } 
+
 .btn{
+    width: 100%;
     margin: 50px 0 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .btn button{
-    font-size: 1.1rem !important;
+    width: 20%;
+    font-size: 1.1rem;
     color: #fff;
     font-weight: bold;
     width: 80%;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 0.7rem;
     outline: none;
     border: none;
     border-radius: 3px;
     background-color: rgba(33, 189, 64, 0.666);
 }
-div{
+.btn button:hover{
+    transform: scale(1.02);
+    transition: 0.15s;
+}
+div, section{
     /* border: 2px solid red; */
 }
 @media screen and (min-width: 768px){
@@ -106,6 +114,31 @@ div{
     #profile-options{
         right: -35px;
     }
+    main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3% 0 0 0;
+        width: 80%;
+    }
+    .container .email, .container .cargo, .container .status{
+        border-bottom: 2px solid rgb(108, 108, 108);
+        margin: 2%;
+        padding-bottom: 5px;
+        width: 25%;
+    }
+    .btn button{
+        width: 30%;
+    }
+
+
+    
 
 }
 
