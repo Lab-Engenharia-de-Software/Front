@@ -24,13 +24,15 @@
         <div class="img-profile">
             <input type="checkbox" id="check-profile">
             <label for="check-profile">
-                <img src="img/person-profile.png" onclick="showOptions()" alt="Profile">
+                <img src="img/person-profile.png" alt="Profile">
             </label>
-            <ul id="profile-options">
-                <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
-                <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
-                <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
-            </ul>
+            <div>
+                <ul id="profile-options">
+                    <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
+                    <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
+                    <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
+                </ul>
+            </div>
         </div>
     </header>
     <main>
@@ -78,17 +80,7 @@
         </div>
 
     </main>
-    <script>
-        function showOptions(){
-            const profOptions = document.getElementById('profile-options');
-            const checkbox = document.getElementById('check-profile');
-            if(checkbox.checked){
-                profOptions.style.display = 'none';
-            }else{
-                profOptions.style.display = 'block';
-            }
-        }
-    </script>
+
     <script>
         class pesquisadores {
             constructor() {
@@ -210,6 +202,6 @@
     
         }
     
-    </script>
+    </script> 
 </body>
 </html>
