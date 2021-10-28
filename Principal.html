@@ -20,6 +20,7 @@
     <header>
         <div style="font-weight: bold; color: #fff;">
             <script> document.write(`Bem vindo, ${localStorage.nome}!`)</script>
+            <p> Bem vindo, <span id="dynamic-name">name</span>! (teste)</p>
         </div>
         <div class="img-profile">
             <input type="checkbox" id="check-profile">
@@ -80,6 +81,9 @@
         </div>
 
     </main>
+    <script>
+        const nomeDinamico = document.getElementById('dynamic-name').innerHTML = localStorage.nome;
+    </script>
 
     <script>
         class pesquisadores {
