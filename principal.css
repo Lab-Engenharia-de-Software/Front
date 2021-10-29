@@ -4,7 +4,8 @@
     font-family: sans-serif;
 }
 header{
-    background-color: rgba(33, 189, 64, 0.666);
+    /* background-color: rgba(33, 189, 64, 0.666); */
+    background-color: #24ae8f;
     padding: 10px 0;
     display: flex;
     flex-direction: row;
@@ -39,7 +40,7 @@ header{
     border-left: 2px solid rgba(255, 255, 255, 0.405);
 }
 input:checked ~ label > img{
-    border: 3px solid rgb(214, 11, 11);
+    border: 3px solid #0f2755;
 }
 input:checked ~ div #profile-options{
     opacity: 1;
@@ -56,7 +57,8 @@ input:checked ~ div #profile-options{
 }
 #profile-options li:hover{
     transition: .3s;
-    color: rgba(33, 189, 64, 0.666);
+    /* color: rgba(33, 189, 64, 0.666); */
+    color: #24ae8f;
     background-color: transparent;    
 }
 #profile-options li:nth-child(3):hover{
@@ -106,7 +108,8 @@ input:checked ~ div #profile-options{
     outline: none;
     border: none;
     border-radius: 3px;
-    background-color: rgba(33, 189, 64, 0.666);
+    /* background-color: #24ae8f; */
+    background-color: #0f2755 ;
 }
 .btn button:hover{
     transform: scale(1.02);
@@ -144,15 +147,13 @@ div, section{
         padding-bottom: 5px;
         width: 25%;
     }
+    .btn{
+        flex-direction: column;
+    }
     .btn button{
-        width: 50%;
+        width: 40%;
         margin: 0.5%;
     }
-    
-
-
-    
-
 }
 
 

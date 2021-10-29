@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="principal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" />    
     <title> Área Principal </title>
     <script>
         if (localStorage.id == undefined) {
@@ -19,8 +19,8 @@
 <body onLoad='hidden()'>
     <header>
         <div style="font-weight: bold; color: #fff;">
-            <script> document.write(`Bem vindo, ${localStorage.nome}!`)</script>
-            <p> Bem vindo, <span id="dynamic-name">name</span>! (teste)</p>
+            <!-- <script> document.write(`Bem vindo, ${localStorage.nome}!`)</script> -->
+            <p> Bem vindo, <span id="dynamic-name">name</span>!</p>
         </div>
         <div class="img-profile">
             <input type="checkbox" id="check-profile">
@@ -29,7 +29,7 @@
             </label>
             <div>
                 <ul id="profile-options">
-                    <li onclick=""" id=""> <i class="fas fa-user"></i> Perfil </li>
+                    <li onclick="" id=""> <i class="fas fa-user"></i> Perfil </li>
                     <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
                     <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
                 </ul>
