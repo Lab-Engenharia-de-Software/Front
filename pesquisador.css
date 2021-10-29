@@ -2,8 +2,13 @@
     padding: 0;
     margin: 0;
 }
+body{
+    background-color: rgb(225, 225, 225);
+
+}
 header{
-    background-color: rgba(33, 189, 64, 0.666);
+    /* background-color: rgba(33, 189, 64, 0.666); */
+    background-color: #24ae8f;
     padding: 30px 0;
 }
 
@@ -30,7 +35,7 @@ header span{
     padding: 20px 2%;
     font-size: 1.1rem;
     font-family: sans-serif;
-    height: 100vh;
+    /* height: 100vh; */
 }
 .container .nome, .container .email{
     width: 100%;
@@ -74,7 +79,8 @@ header span{
     outline: none;
     border: none;
     border-radius: 3px;
-    background-color: rgba(33, 189, 64, 0.666);
+    /* background-color: rgba(33, 189, 64, 0.666); */
+    background-color: #24ae8f;
 }
 .container .wrapper{
     padding: 10px 0;
@@ -83,7 +89,7 @@ header span{
     align-items: center;
     justify-content: center;
     flex-flow: wrap;
-    background-color: rgba(223, 191, 191, 0.245);
+    background-color: #9e9e9e54;
 }
 .container button:hover{
     transform: scale(1.03);
@@ -123,6 +129,6 @@ header span{
     .container .wrapper{
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 }
