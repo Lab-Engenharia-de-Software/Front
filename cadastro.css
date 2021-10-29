@@ -3,7 +3,8 @@
     padding: 0;
 }
 body{
-    background-color: rgba(33, 189, 64, 0.666) !important;
+    /* background-color: rgba(33, 189, 64, 0.666) !important; */
+    background-color: #24ae8f !important;
 }
 
 main{
@@ -43,7 +44,8 @@ label{
 }
 
 #btn-cadastro{
-    background-color: rgba(33, 189, 64, 0.666);
+    /* background-color: rgba(33, 189, 64, 0.666); */
+    background-color: #0f2755;
     border: none;
     outline: none;
     color: #fff;
@@ -53,7 +55,8 @@ label{
 }
 
 #btn-cadastro:hover{
-    background-color: rgba(10, 226, 53, 0.666);
+    /* background-color: rgba(10, 226, 53, 0.666); */
+    background-color: #224380;
 }
 @media screen and (min-width: 768px){
     main{
