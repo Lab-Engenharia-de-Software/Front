@@ -74,6 +74,7 @@ label{
         width: 80%;
         max-width: 1100px;
         padding: 20px 20px 40px 20px;
+        box-shadow: 5px 5px 5px rgba(37, 37, 37, 0.279);
     }
     .wrapper-content{
         display: flex;
