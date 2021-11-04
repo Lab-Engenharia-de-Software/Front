@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <script>
+        if (localStorage.cargo != "admin" && localStorage.cargo != "secretaria" ) {
+            alert("Acesso negado!")
+            window.location.href = "/Principal.html"
+        }
+    </script>
+<head>
+  <title>Biotério</title>
+</head>
+<body onLoad='getEspecies()'>
+  <main>
+    <h1>Nome: <h id = 'nome-bioterio'></h1>
+        <div>
+            <button onClick = 'ExcluirBioterio()'>Excluir Biotério</button>
+        </div>
+   <br>
+    <row> 
+        Cadastrar nova espécie: 
+        <input id = 'nome-especie' placeholder='Nome da espécie'>
+        <button onClick = 'cadastrarEspecie()'>Cadastrar</button>
+    </row>
+        <div class="content">
+            <p>Espécies cadastrados:</p>
+            <table border="1" id="tabela-especies">
+                <thead>
+                    <th class="center">ID</th>
+                    <th class="center">NOME</th>
+                    <th class="center">delete</th>
+                </thead>
+                <tbody id="tbody-especies">
+                </tbody>
+            </table>
+    </div>
+
+  </main>
+
+   
+</body>
+<script>
+    async function getEspecies() {
+            var url = new URL(window.location.href);
+            var id = url.searchParams.get("id");
+            var list = []
+            var especies = []
+            let tbody = document.getElementById("tbody-especies")
+            let bioterio = await fetch(`http://179.232.13.8:3333/Bioterio/${id}`, {
+                method: 'GET',
+            })
+                .then((res) => res.json())
+                .then((data) => list.push(data))
+                .catch((err) => console.log(err));
+            console.log(list[0].nome)
+    
+            document.getElementById("nome-bioterio").innerHTML = list[0].nome
+            especies = list[0].especies.map((data) => {
+                return {
+                    id: data.id,
+                    nome: data.nome,
+                    especies: data.qntEspecies
+                }
+            })
+            for (let i = 0; i < especies.length; i++) {
+                let tr = tbody.insertRow();
+
+                    let td_id = tr.insertCell();
+                    let td_nome = tr.insertCell();
+                    let td_excluir = tr.insertCell();
+                    
+    
+                    td_id.innerHTML = especies[i].id;
+                    td_nome.innerText = especies[i].nome;
+                    td_excluir.innerHTML = "<button onCLick='excluirEspecie(" + especies[i].id + ")'> X </button>";
+                    console.log("sim")
+                    
+            }
+    
+            console.log(especies)
+        }
+
+    async function cadastrarEspecie(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        
+        form = {
+            "nome": document.getElementById("nome-especie").value,
+        }
+        await fetch(`http://179.232.13.8:3333/Bioterio/Especie/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+                  'Authorization': localStorage.cargo  },
+        body: JSON.stringify(form),
+      })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+
+        window.location.reload()
+    }
+    async function excluirBioterio(){
+        form = {
+            "nome": document.getElementById("nome-bioterio").value,
+        }
+        await fetch('http://179.232.13.8:3333/Bioterio/Cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+                  'Authorization': localStorage.cargo  },
+        body: JSON.stringify(form),
+      })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+
+        window.location.reload()
+    }
+    async function excluirEspecie(id){
+        var url = new URL(window.location.href);
+        var id_url = url.searchParams.get("id");
+
+        await fetch(`http://179.232.13.8:3333/Bioterio/Especie/${id_url}/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json',
+                  'Authorization': localStorage.cargo  },
+      })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+        window.location.reload()
+    }
+</script>
+
+</html>
