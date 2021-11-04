@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <script>
+        if (localStorage.cargo != "admin" && localStorage.cargo != "secretaria" ) {
+            alert("Acesso negado!")
+            window.location.href = "/Principal.html"
+        }
+    </script>
+<head>
+  <title> Biotérios</title>
+</head>
+<body onLoad='getBioterios()'>
+  <main>
+    <row> 
+        Cadastrar novo biotério: 
+        <input id = 'nome-bioterio' placeholder='nome do biotério'>
+        <button onClick = 'cadastrarBioterio()'>Cadastrar</button>
+    </row>
+        <div class="content">
+            <p>Biotérios cadastrados:</p>
+            <table border="1" id="tabela-bioterios">
+                <thead>
+                    <th class="center">ID</th>
+                    <th class="center">NOME</th>
+                    <th class="center"><div>ESPÉCIES</th>
+                </thead>
+                <tbody id="tbody-bioterios">
+                </tbody>
+            </table>
+    </div>
+
+  </main>
+
+   
+</body>
+<script>
+    async function getBioterios() {
+            var list = []
+            var bioterios = []
+            let tbody = document.getElementById("tbody-bioterios")
+            let bioterio = await fetch(`http://179.232.13.8:3333/Bioterio/Lista`, {
+                method: 'GET',
+            })
+                .then((res) => res.json())
+                .then((data) => list.push(data))
+                .catch((err) => console.log(err));
+            console.log(list[0].bioterios)
+    
+    
+            bioterios = list[0].bioterios.map((data) => {
+                return {
+                    id: data.id,
+                    nome: data.nome,
+                    especies: data.qntEspecies
+                }
+            })
+            for (let i = 0; i < bioterios.length; i++) {
+                let tr = tbody.insertRow();
+
+                    let td_id = tr.insertCell();
+                    let td_nome = tr.insertCell();
+                    let td_especies = tr.insertCell();
+                    
+    
+                    td_id.innerHTML = "<a href='bioterio?id=" + bioterios[i].id + "'>" + bioterios[i].id; +"</a>";
+                    td_nome.innerText = bioterios[i].nome;
+                    td_especies.innerText = bioterios[i].especies;
+                    console.log("sim")
+            }
+    
+            console.log(bioterios)
+        }
+
+    async function cadastrarBioterio(){
+        form = {
+            "nome": document.getElementById("nome-bioterio").value,
+        }
+        await fetch('http://179.232.13.8:3333/Bioterio/Cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+                  'Authorization': localStorage.cargo  },
+        body: JSON.stringify(form),
+      })
+        .then((res) => res.json())
+        .then((data) => user = data)
+        .catch((err) => console.log(err));
+
+        window.location.reload()
+    }
+</script>
+
+</html>
