@@ -50,6 +50,7 @@
             <div class="btn">
                 <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"> Emitir Protocolo </button>
                 <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"> Cadastrar Secretária </button>
+                <button type="button" onCLick="gotoBioterio()" id="goto-bioterio"> Biotérios </button>
             </div>
         </section>
         <div class="content">
@@ -92,6 +93,9 @@
             }
         }
         function hidden() {
+            if(localStorage.cargo != "admin" && localStorage.cargo != "secretaria"){
+                document.getElementById("goto-bioterio").style.visibility = "hidden";
+            }
             if (localStorage.cargo != "admin") {
                 document.getElementById("cadastro-secretaria").style.visibility = "hidden";
             }
@@ -113,7 +117,9 @@
         }
         function cadastroSecretaria() {
             window.location.href = "Cadastro/Secretaria.html"
-    
+        }
+        function gotoBioterio() {
+            window.location.href = "Bioterio/List.html"
         }
         async function getPesquisadores() {
             var list = []
