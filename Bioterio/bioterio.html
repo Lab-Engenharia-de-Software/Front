@@ -13,7 +13,7 @@
   <main>
     <h1>Nome: <h id = 'nome-bioterio'></h1>
         <div>
-            <button onClick = 'ExcluirBioterio()'>Excluir Biotério</button>
+            <button onClick = 'excluirBioterio()'>Excluir Biotério</button>
         </div>
    <br>
     <row> 
@@ -99,20 +99,18 @@
         window.location.reload()
     }
     async function excluirBioterio(){
-        form = {
-            "nome": document.getElementById("nome-bioterio").value,
-        }
-        await fetch('http://179.232.13.8:3333/Bioterio/Cadastro', {
-        method: 'POST',
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        await fetch(`http://179.232.13.8:3333/Bioterio/${id}`, {
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json',
                   'Authorization': localStorage.cargo  },
-        body: JSON.stringify(form),
       })
         .then((res) => res.json())
         .then((data) => user = data)
         .catch((err) => console.log(err));
 
-        window.location.reload()
+        window.location.href= '/Bioterio/List.html'
     }
     async function excluirEspecie(id){
         var url = new URL(window.location.href);
