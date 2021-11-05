@@ -3,6 +3,10 @@
     margin: 0;
     font-family: sans-serif;
 }
+body{
+    position: relative;
+    background-color: rgb(225, 225, 225);
+}
 header{
     /* background-color: rgba(33, 189, 64, 0.666); */
     background-color: #24ae8f;
@@ -11,6 +15,29 @@ header{
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+}
+#wrapper-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #24ae8f;
+    padding: 100px 50px;
+    color: #fff;
+    border: 2px solid #fff;
+    display: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+#wrapper-modal #lbl-checkbox{
+    position: absolute;
+    top: -3%;
+    left: -1%;
+    cursor: pointer;
+    font-size: 40px;
+}
+#wrapper-modal #modal-checkbox{
+    display: none;
 }
 #check-profile{
     display: none;
@@ -35,7 +62,7 @@ header{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 #tabela-pesquisadores thead tr {
-    background-color: #009879;
+    background-color: #24ae8f;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
@@ -107,7 +134,7 @@ input:checked ~ div #profile-options{
     margin-right: 5px;
 }
  .container{
-    background-color: rgba(223, 191, 191, 0.245);
+    background-color: rgb(204, 204, 204);
     padding: 2% 3%;
     display: flex;
     align-items: center;
