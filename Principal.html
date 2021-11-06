@@ -116,13 +116,14 @@
         function showModal(){
             modal = document.getElementById('wrapper-modal');
             checkbox = document.getElementById('modal-checkbox');
-            modal.style.display = 'block';
-
+            modal.classList.add('active');
+            
             document.addEventListener('click', ()=> {
                 if(checkbox.checked){
-                    modal.style.display = 'none';
+                    modal.classList.remove('active');
                     checkbox.checked = false;
                 }
+                
             })
 
         }

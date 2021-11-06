@@ -7,6 +7,7 @@ body{
     position: relative;
     background-color: rgb(225, 225, 225);
 }
+
 header{
     /* background-color: rgba(33, 189, 64, 0.666); */
     background-color: #24ae8f;
@@ -20,14 +21,23 @@ header{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    width: 70%;
     background-color: #24ae8f;
-    padding: 100px 50px;
+    padding: 50px;
     color: #fff;
     border: 2px solid #fff;
-    display: none;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#wrapper-modal.active{
+    visibility: visible;
+    z-index: 100;
+    opacity: 1;
+    transition: 0.4s;
 }
 #wrapper-modal #lbl-checkbox{
     position: absolute;
@@ -181,9 +191,7 @@ input:checked ~ div #profile-options{
     transform: scale(1.02);
     transition: 0.15s;
 }
-div, section{
-    /* border: 2px solid red; */
-}
+
 @media screen and (min-width: 768px){
     header{
         padding: 15px 0;
@@ -220,6 +228,11 @@ div, section{
         width: 40%;
         margin: 0.5%;
     }
+    #wrapper-modal{
+        width: 30%;
+    }
+
+
 }
 
 
