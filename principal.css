@@ -43,7 +43,7 @@ header{
 #wrapper-modal #lbl-checkbox{
     position: absolute;
     top: -3%;
-    left: -1%;
+    left: -2%;
     cursor: pointer;
     font-size: 40px;
 }
@@ -51,7 +51,7 @@ header{
     display: none;
 }
 #wrapper-modal p{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin: 5px 0;
 }
@@ -66,7 +66,7 @@ header{
 }
 
 #wrapper-modal button{
-    font-size: 1.055rem;
+    font-size: 1rem;
     color: #fff;
     margin: 3px 0;
     font-weight: bold;
@@ -80,16 +80,16 @@ header{
 #wrapper-modal button:nth-child(1){
     background-color:  #0f2755;
 }
-#wrapper-modal button:nth-child(1):hover{
+#wrapper-modal button:nth-child(1):hover > .fa-plus{
     transition: 0.3s;
-    background-color: #1b3a73 ;
+    transform: rotate(-20deg);
 }
 #wrapper-modal button:nth-child(2){
     background-color: rgb(98, 4, 4) ;
 }
-#wrapper-modal button:nth-child(2):hover{
-    transition: 0.3s;
-    background-color: rgb(135, 6, 6) ;
+#wrapper-modal button:nth-child(2):hover > .fa-trash-alt{
+    transition: 0.3s ;
+    transform: rotate(-20deg);
 }
 
 
@@ -280,6 +280,8 @@ input:checked ~ div #profile-options{
     #wrapper-modal{
         top: 55%;
         width: 40%;
+        max-width: 600px;
+        /* width: 25%; */    /* Em monitores widescreen*/
     }
 }
 
