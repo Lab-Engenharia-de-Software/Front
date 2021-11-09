@@ -24,7 +24,7 @@
         <div class="img-profile">
             <input type="checkbox" id="check-profile">
             <label for="check-profile">
-                <img src="img/person-profile.png" alt="Profile">
+                <img src="img/prof-fabio.png" alt="Profile">
             </label>
             <div>
                 <ul id="profile-options">
@@ -49,7 +49,7 @@
             <div class="btn">
                 <button type="button" onCLick="emitirProtocolo()" id="emitir-protocolo"> Emitir Protocolo </button>
                 <button type="button" onCLick="cadastroSecretaria()" id="cadastro-secretaria"> Cadastrar Secretária </button>
-                <button type="button" onCLick="showModal()" id="goto-bioterio"> Biotérios </button>
+                <button type="button" onCLick="showModal()" id="goto-bioterio"> Cadastrar Biotérios </button>
             </div>
         </section>
         <div class="content">
@@ -83,18 +83,17 @@
         <div id="wrapper-modal" class="">
             <label for="modal-checkbox" id="lbl-checkbox"><i class="fas fa-times-circle"></i></label>
             <input type="checkbox" id="modal-checkbox">
-            <h1>Nome: <h id = 'nome-bioterio'></h1>
+            <p>Nome: <h id = 'nome-bioterio'></p>
             <div>
-                <button onClick = 'excluirBioterio()'>Excluir Biotério</button>
-            </div>
-            <br>
-            <row> 
-                Cadastrar nova espécie: 
+                <p> Cadastrar nova espécie: </p>
                 <input id = 'nome-especie' placeholder='Nome da espécie'>
-                <button onClick = 'cadastrarEspecie()'>Cadastrar</button>
-            </row>
+            </div>
+            <div>
+                <button onClick = 'cadastrarEspecie()'><i class="fas fa-plus"></i> Cadastrar</button>
+                <button onClick = 'excluirBioterio()'><i class="far fa-trash-alt"></i> Excluir Biotério</button>
+            </div>
             <div class="content">
-                <p>Espécies cadastrados:</p>
+                <p>Espécies cadastradas:</p>
                 <table border="1" id="tabela-especies">
                     <thead>
                         <th class="center">ID</th>
@@ -128,7 +127,7 @@
 
         }
     </script>
-    <script>
+    <!-- <script>
         async function getEspecies() {
                 var url = new URL(window.location.href);
                 var id = url.searchParams.get("id");
@@ -343,6 +342,6 @@
     
         }
     
-    </script>
+    </script> -->
 </body>
 </html>

@@ -17,21 +17,22 @@ header{
     align-items: center;
     justify-content: flex-end;
 }
+/* MODAL BIOTÉRIO */
 #wrapper-modal{
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 80%;
     background-color: #24ae8f;
-    padding: 50px;
+    padding: 50px 20px 40px 30px;
     color: #fff;
     border: 2px solid #fff;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     visibility: hidden;
     opacity: 0;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 #wrapper-modal.active{
     visibility: visible;
@@ -49,6 +50,51 @@ header{
 #wrapper-modal #modal-checkbox{
     display: none;
 }
+#wrapper-modal p{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+#wrapper-modal div{
+    margin-top: 20px;
+}
+#wrapper-modal input{
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    outline: none;
+}
+
+#wrapper-modal button{
+    font-size: 1.055rem;
+    color: #fff;
+    margin: 3px 0;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px 15px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+#wrapper-modal button:nth-child(1){
+    background-color:  #0f2755;
+}
+#wrapper-modal button:nth-child(1):hover{
+    transition: 0.3s;
+    background-color: #1b3a73 ;
+}
+#wrapper-modal button:nth-child(2){
+    background-color: rgb(98, 4, 4) ;
+}
+#wrapper-modal button:nth-child(2):hover{
+    transition: 0.3s;
+    background-color: rgb(135, 6, 6) ;
+}
+
+
+
+/* MENU DO PERFIL */
 #check-profile{
     display: none;
 }
@@ -62,46 +108,9 @@ header{
     cursor: pointer;
     border: 3px solid #fff;
 }
-#tabela-pesquisadores{
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-#tabela-pesquisadores thead tr {
-    background-color: #24ae8f;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  #tabela-pesquisadores th,
-  #tabela-pesquisadores td {
-    padding: 12px 15px;
-  }
-  
-  #tabela-pesquisadores tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  #tabela-pesquisadores tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  #tabela-pesquisadores tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  #tabela-pesquisadores tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-  }
-  
-  
+
 #profile-options{
+    z-index: 5;
     position: absolute;
     cursor: pointer;
     bottom: -180%;
@@ -192,6 +201,46 @@ input:checked ~ div #profile-options{
     transition: 0.15s;
 }
 
+/* TABELA DOS PESQUISADORES */
+#tabela-pesquisadores{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 100px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+#tabela-pesquisadores thead tr {
+    background-color: #24ae8f;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  #tabela-pesquisadores th,
+  #tabela-pesquisadores td {
+    padding: 12px 15px;
+  }
+  
+  #tabela-pesquisadores tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  #tabela-pesquisadores tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  #tabela-pesquisadores tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  #tabela-pesquisadores tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+
 @media screen and (min-width: 768px){
     header{
         padding: 15px 0;
@@ -229,10 +278,9 @@ input:checked ~ div #profile-options{
         margin: 0.5%;
     }
     #wrapper-modal{
-        width: 30%;
+        top: 55%;
+        width: 40%;
     }
-
-
 }
 
 
