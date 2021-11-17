@@ -28,7 +28,7 @@
             </label>
             <div>
                 <ul id="profile-options">
-                    <li onclick="" id=""> <i class="fas fa-user"></i> Perfil </li>
+                    <li onclick="window.location.href=`/Pesquisador.html?id=${localStorage.id}`" id=""> <i class="fas fa-user"></i> Perfil </li>
                     <li onclick="" id="" > <i class="fas fa-cog" ></i>  Configurações </li>
                     <li onclick="logout()" id="logout"> <i class="fas fa-power-off"></i> Sair </li>
                 </ul>
@@ -319,7 +319,7 @@
                         email: user.email
                     }
                 })
-    
+                
                 for (let i = 0; i < listaSecretaria.length; i++) {
                     if (listaSecretaria[i].id != "1") {
                         let tr = tbody2.insertRow();
@@ -327,9 +327,7 @@
                         let td_nome = tr.insertCell();
                         let td_status = tr.insertCell();
                         let td_link = tr.insertCell();
-    
-    
-    
+
                         td_tarefa.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + "Validar cadastro" + "</a>";
                         td_link.innerHTML = "<a href='Pesquisador.html?id=" + listaSecretaria[i].id + "'>" + listaSecretaria[i].email; +"</a>";
                         td_nome.innerText = listaSecretaria[i].nome;
@@ -340,6 +338,46 @@
                 }
     
             }else{ //votação
+                let tbody2 = document.getElementById("tbody-atividades")
+                let listAtividadesPesquisadores = []
+                var listaSecretaria = []
+                await fetch(`http://179.232.13.8:3333/Pesquisador/Atividades`, {
+                    method: 'GET',
+                    headers: { 'eleitor': localStorage.id },
+                })
+                    .then((res) => res.json())
+                    .then((data) => listAtividadesPesquisadores.push(data))
+                    .catch((err) => console.log(err));
+                console.log(listAtividadesPesquisadores[0].urnas)
+                listaSecretaria = listAtividadesPesquisadores.map((user) => {
+                    console.log('a',user)
+                    return {
+                        candidatoId: user.urnas.candidatoId,
+                        status: user.urnas.status,
+                        cargo: user.urnas.role,
+                        nome: user.urnas.nome,
+                        id: user.urnas.id
+                    }
+                })
+                
+                for (let i = 0; i < listaSecretaria.length; i++) {
+                    console.log('casd',listaSecretaria)
+                    if (listaSecretaria[i].id != "1") {
+                        let tr = tbody2.insertRow();
+                        let td_tarefa = tr.insertCell();
+                        let td_nome = tr.insertCell();
+                        let td_status = tr.insertCell();
+                        let td_link = tr.insertCell();
+
+                        td_tarefa.innerHTML = "<a href='Votar.html?id=" + listaSecretaria[i].id + "'>" + "Eleição" + "</a>";
+                        td_link.innerHTML = "<a href='Votar.html?id=" + listaSecretaria[i].id + "'>" + 'votar' +"</a>";
+                        td_nome.innerText = listaSecretaria[i].candidatoId;
+                        td_status.innerText = listaSecretaria[i].status;
+                        console.log("sim")
+                    }
+    
+                }
+
 
             }
     
