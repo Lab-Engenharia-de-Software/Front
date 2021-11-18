@@ -19,7 +19,7 @@ header{
 /* MODAL BIOTÉRIO */
 #wrapper-modal{
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
@@ -303,7 +303,7 @@ input:checked ~ div #profile-options{
     /* MODAL BIOTÉRIO */
     #wrapper-modal{
         top: 55%;
-        width: 40%;
+        width: 30%;
         max-width: 600px;
         /* width: 25%; */    /* Em monitores widescreen*/
     }

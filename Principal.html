@@ -84,24 +84,22 @@
         <div id="wrapper-modal" class="">
             <label for="modal-checkbox" id="lbl-checkbox"><i class="fas fa-times-circle"></i></label>
             <input type="checkbox" id="modal-checkbox">
-            <p>Nome: <h id = 'nome-bioterio'></p>
             <div>
-                <p> Cadastrar nova espécie: </p>
-                <input id = 'nome-especie' placeholder='Nome da espécie'>
+                <p> Cadastrar novo biotério: </p>
+                <input id='nome-bioterio' placeholder='Nome do biotério'>
             </div>
             <div>
-                <button onClick = 'cadastrarEspecie()'><i class="fas fa-plus"></i> Cadastrar</button>
-                <button onClick = 'excluirBioterio()'><i class="far fa-trash-alt"></i> Excluir Biotério</button>
+                <button onClick = 'cadastrarBioterio()'> Cadastrar </button>
             </div>
             <div class="content">
-                <p>Espécies cadastradas:</p>
-                <table border="1" id="tabela-especies">
+                <p>Biotérios cadastrados:</p>
+                <table border="1" id="tabela-bioterios">
                     <thead>
                         <th class="center">ID</th>
                         <th class="center">NOME</th>
-                        <th class="center">delete</th>
+                        <th class="center"><div>ESPÉCIES</th>
                     </thead>
-                    <tbody id="tbody-especies">
+                    <tbody id="tbody-bioterios">
                     </tbody>
                 </table>
             </div>
@@ -129,54 +127,48 @@
         }
     </script>
     <script>
-        async function getEspecies() {
-                var url = new URL(window.location.href);
-                var id = url.searchParams.get("id");
+        async function getBioterios() {
                 var list = []
-                var especies = []
-                let tbody = document.getElementById("tbody-especies")
-                let bioterio = await fetch(`http://179.232.13.8:3333/Bioterio/${id}`, {
+                var bioterios = []
+                let tbody = document.getElementById("tbody-bioterios")
+                let bioterio = await fetch(`http://179.232.13.8:3333/Bioterio/Lista`, {
                     method: 'GET',
                 })
                     .then((res) => res.json())
                     .then((data) => list.push(data))
                     .catch((err) => console.log(err));
-                console.log(list[0].nome)
+                console.log(list[0].bioterios)
         
-                document.getElementById("nome-bioterio").innerHTML = list[0].nome
-                especies = list[0].especies.map((data) => {
+        
+                bioterios = list[0].bioterios.map((data) => {
                     return {
                         id: data.id,
                         nome: data.nome,
                         especies: data.qntEspecies
                     }
                 })
-                for (let i = 0; i < especies.length; i++) {
+                for (let i = 0; i < bioterios.length; i++) {
                     let tr = tbody.insertRow();
     
                         let td_id = tr.insertCell();
                         let td_nome = tr.insertCell();
-                        let td_excluir = tr.insertCell();
+                        let td_especies = tr.insertCell();
                         
         
-                        td_id.innerHTML = especies[i].id;
-                        td_nome.innerText = especies[i].nome;
-                        td_excluir.innerHTML = "<button onCLick='excluirEspecie(" + especies[i].id + ")'> X </button>";
+                        td_id.innerHTML = "<a href='/Bioterio/bioterio.html?id=" + bioterios[i].id + "'>" + bioterios[i].id; +"</a>";
+                        td_nome.innerText = bioterios[i].nome;
+                        td_especies.innerText = bioterios[i].especies;
                         console.log("sim")
-                        
                 }
         
-                console.log(especies)
+                console.log(bioterios)
             }
     
-        async function cadastrarEspecie(){
-            var url = new URL(window.location.href);
-            var id = url.searchParams.get("id");
-            
+        async function cadastrarBioterio(){
             form = {
-                "nome": document.getElementById("nome-especie").value,
+                "nome": document.getElementById("nome-bioterio").value,
             }
-            await fetch(`http://179.232.13.8:3333/Bioterio/Especie/${id}`, {
+            await fetch('http://179.232.13.8:3333/Bioterio/Cadastro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json',
                       'Authorization': localStorage.cargo  },
@@ -186,34 +178,6 @@
             .then((data) => user = data)
             .catch((err) => console.log(err));
     
-            window.location.reload()
-        }
-        async function excluirBioterio(){
-            var url = new URL(window.location.href);
-            var id = url.searchParams.get("id");
-            await fetch(`http://179.232.13.8:3333/Bioterio/${id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json',
-                      'Authorization': localStorage.cargo  },
-          })
-            .then((res) => res.json())
-            .then((data) => user = data)
-            .catch((err) => console.log(err));
-    
-            window.location.href= '/Bioterio/List.html'
-        }
-        async function excluirEspecie(id){
-            var url = new URL(window.location.href);
-            var id_url = url.searchParams.get("id");
-    
-            await fetch(`http://179.232.13.8:3333/Bioterio/Especie/${id_url}/${id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json',
-                      'Authorization': localStorage.cargo  },
-          })
-            .then((res) => res.json())
-            .then((data) => user = data)
-            .catch((err) => console.log(err));
             window.location.reload()
         }
     </script>
@@ -235,7 +199,7 @@
             }
             getPesquisadores();
             getAtividades();
-    
+            getBioterios()
     
     
         }
