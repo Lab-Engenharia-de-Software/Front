@@ -9,13 +9,93 @@
 <head>
   <title>Votação</title>
 </head>
-<body onLoad=''>
+<body onLoad='load()'>
     <div> 
-             
+        <div>
+            Votação para presidente
+        </div>
+            
+        <br><br>
+        <div>
+            Candidato: <h id='nome'> 
+        </div>
+        <br></br>
+        Votos: <h id='votos'></h>
+        <br><br>
+        Afavor: <h id='afavor'></h>
+        <br><br>
+        Contra: <h id='contra'></h>
+        <br><br>
+    </div>
+    <div>
+        Votar:
+        <button type="button" onclick="votarSim()" >Sim</button>
+        <button type="button"onclick='votarNao()'>Não</button>
     </div>
 </body>
 <script>
+function load(){
+    getVotação();
+}
+async function getVotação(){
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
+    var urna = null
+    let votos = await fetch(`http://179.232.13.8:3333/voto/Presidente`,{
+                method: 'GET',
+                headers: { 'value': id },
+            })
+            .then((res) => res.json())
+            .then((data) => urna = data)
+            .catch((err) => console.log(err));
+        console.log(urna)
+    
+    document.getElementById("votos").innerHTML = urna.Votos; 
+    document.getElementById("nome").innerHTML = urna.Candidato; 
+    document.getElementById("afavor").innerHTML = urna.Afavor; 
+    document.getElementById("contra").innerHTML = urna.Contra; 
+}  
+
+async function votarSim(){
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
+
+    const form = {
+        "voto":1,
+        "eleitor": localStorage.id,
+        "urna":id
+      }
+    await fetch(`http://179.232.13.8:3333/voto/Presidente`,{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form)
+            })
+            .then((res) => res.json())
+            .then((data) => voto = data)
+            .catch((err) => console.log(err));
+            window.location.reload();
+}
+
+async function votarNao(){
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
+    const form = {
+        "voto":0,
+        "eleitor": localStorage.id,
+        "urna":id
+      }
    
+    await fetch(`http://179.232.13.8:3333/voto/Presidente`,{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form)
+            })
+            .then((res) => res.json())
+            .then((data) => voto = data)
+            .catch((err) => console.log(err));
+            window.location.reload();
+}
+
 </script>
 
 </html>
