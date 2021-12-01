@@ -55,7 +55,7 @@ header{
     margin: 5px 0;
 }
 #wrapper-modal div{
-    margin-top: 20px;
+    margin-top: 5px;
 }
 #wrapper-modal input{
     width: 100%;
@@ -63,7 +63,6 @@ header{
     border: none;
     outline: none;
 }
-
 #wrapper-modal button{
     font-size: 1rem;
     color: #fff;
@@ -76,20 +75,35 @@ header{
     border: none;
     border-radius: 3px;
 }
-#wrapper-modal button:nth-child(1){
+#wrapper-modal .btnCadastrar{
     background-color:  #0f2755;
 }
-#wrapper-modal button:nth-child(1):hover > .fa-plus{
-    transition: 0.3s;
-    transform: rotate(-20deg);
+#wrapper-modal .collapsible{
+    color: rgb(52, 52, 52);
+    background-color:  rgb(186, 186, 186);
+
 }
-#wrapper-modal button:nth-child(2){
-    background-color: rgb(98, 4, 4) ;
-}
-#wrapper-modal button:nth-child(2):hover > .fa-trash-alt{
-    transition: 0.3s ;
-    transform: rotate(-20deg);
-}
+/* TABELA BIOTÉRIOS - MODAL */
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+  .table-content{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
 
 /* MENU DO PERFIL */
 #check-profile{
@@ -219,8 +233,17 @@ input:checked ~ div #profile-options{
     font-size: 17px;
     width: 100%;
 }
+#tabela-bioterios{
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+    min-width: 100px;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
 #tabela-pesquisadores, #tabela-atividades{
-    
     border-collapse: collapse;
     margin: 10px 0;
     font-size: 0.9em;
@@ -230,6 +253,15 @@ input:checked ~ div #profile-options{
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+.tb-bioterios .collapsible{
+    background-color: rgb(169, 169, 169);
+    color: #000 ;
+}
+#tabela-bioterios thead tr{
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
 #tabela-pesquisadores thead tr, #tabela-atividades thead tr{
     background-color: #24ae8f;
     color: #ffffff;
@@ -238,11 +270,12 @@ input:checked ~ div #profile-options{
   }
   
   #tabela-pesquisadores th, #tabela-pesquisadores td, 
-  #tabela-atividades th, #tabela-atividades td {
+  #tabela-atividades th, #tabela-atividades td,  
+  #tabela-bioterios th, #tabela-bioterios td {
     padding: 12px 15px;
   }
   
-  #tabela-pesquisadores tbody tr , #tabela-atividades tbody tr{
+  #tabela-pesquisadores tbody tr , #tabela-atividades tbody tr, #tabela-bioterios tbody tr{
     border-bottom: 1px solid #dddddd;
   }
   
@@ -251,11 +284,11 @@ input:checked ~ div #profile-options{
     background-color: #f3f3f3;
   }
   
-  #tabela-pesquisadores tbody tr:last-of-type,  #tabela-atividades tbody tr:last-of-type {
+  #tabela-pesquisadores tbody tr:last-of-type,  #tabela-atividades tbody tr:last-of-type, #tabela-bioterios tbody tr:last-of-type{
     border-bottom: 2px solid #009879;
   }
   
-  #tabela-pesquisadores tbody tr.active-row, #tabela-atividades tbody tr.active-row  {
+  #tabela-pesquisadores tbody tr.active-row, #tabela-atividades tbody tr.active-row, #tabela-bioterios tbody tr.active-row{
     font-weight: bold;
     color: #009879;
   }

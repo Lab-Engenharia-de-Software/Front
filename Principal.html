@@ -89,19 +89,21 @@
                 <input id='nome-bioterio' placeholder='Nome do biotério'>
             </div>
             <div>
-                <button onClick = 'cadastrarBioterio()'> Cadastrar </button>
+                <button onClick = 'cadastrarBioterio()' class="btnCadastrar"> Cadastrar </button>
             </div>
-            <div class="content">
-                <p>Biotérios cadastrados:</p>
-                <table border="1" id="tabela-bioterios">
-                    <thead>
-                        <th class="center">ID</th>
-                        <th class="center">NOME</th>
-                        <th class="center"><div>ESPÉCIES</th>
-                    </thead>
-                    <tbody id="tbody-bioterios">
-                    </tbody>
-                </table>
+            <div class="tb-bioterios">
+                <!-- <p>Biotérios cadastrados:</p> -->
+                <button type="button" class="collapsible"> Biotérios Cadastrados </button>
+                <div class="table-content">
+                    <table border="1" id="tabela-bioterios">
+                        <thead>
+                            <th class="center">ID</th>
+                            <th class="center">NOME</th>
+                            <th class="center">ESPÉCIES</th>
+                        </thead>
+                        <tbody id="tbody-bioterios"> </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     
@@ -348,5 +350,21 @@
         }
     
     </script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+        </script>
 </body>
 </html>
