@@ -133,7 +133,7 @@
                 var list = []
                 var bioterios = []
                 let tbody = document.getElementById("tbody-bioterios")
-                let bioterio = await fetch(`http://179.232.13.8:3333/Bioterio/Lista`, {
+                let bioterio = await fetch(`http://26.92.70.44:3333/Bioterio/Lista`, {
                     method: 'GET',
                 })
                     .then((res) => res.json())
@@ -170,7 +170,7 @@
             form = {
                 "nome": document.getElementById("nome-bioterio").value,
             }
-            await fetch('http://179.232.13.8:3333/Bioterio/Cadastro', {
+            await fetch('http://26.92.70.44:3333/Bioterio/Cadastro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json',
                       'Authorization': localStorage.cargo  },
@@ -223,7 +223,7 @@
             var pesquisadores = []
             var presidentes = []
             let tbody = document.getElementById("tbody")
-            let pesquisador = await fetch(`http://179.232.13.8:3333/Pesquisador/Lista`, {
+            let pesquisador = await fetch(`http://26.92.70.44:3333/Pesquisador/Lista`, {
                 method: 'GET',
                 headers: { 'Authorization': localStorage.cargo },
             })
@@ -268,7 +268,7 @@
                 let tbody2 = document.getElementById("tbody-atividades")
                 let listAtividadesPesquisadores = []
                 var listaSecretaria = []
-                await fetch(`http://179.232.13.8:3333/Secretaria/Atividades`, {
+                await fetch(`http://26.92.70.44:3333/Secretaria/Atividades`, {
                     method: 'GET',
                     headers: { 'Authorization': localStorage.cargo },
                 })
@@ -307,7 +307,7 @@
                 let tbody2 = document.getElementById("tbody-atividades")
                 let listAtividadesPesquisadores = []
                 var listaSecretaria = []
-                await fetch(`http://179.232.13.8:3333/Pesquisador/Atividades`, {
+                await fetch(`http://26.92.70.44:3333/Pesquisador/Atividades`, {
                     method: 'GET',
                     headers: { 'eleitor': localStorage.id },
                 })
