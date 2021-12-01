@@ -59,8 +59,8 @@
       "email":email,
       "senha":senha,
     }
-    let a = null
-    let access = await fetch('http://26.92.70.44:3333/login', {
+    let a = null  
+    let access = await fetch('http://localhost:3333/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(obj),

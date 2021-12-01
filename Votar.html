@@ -1,101 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="votar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title> Votação para presidente </title>
+    <!-- <script>
         if (localStorage.cargo == undefined) {
             alert("Acesso negado!")
             window.location.href = "/Principal.html"
         }
-    </script>
-<head>
-  <title>Votação</title>
+    </script> -->
 </head>
 <body onLoad='load()'>
-    <div> 
-        <div>
-            Votação para presidente
+    <header>
+        <a href="/Principal.html" title="Voltar"><i class="far fa-arrow-alt-circle-left"></i></a> 
+        <span> Votação para Presidente </span>
+    </header>
+    <div class="container">
+        <div class="wrapper-content">             
+            <div>
+                <span> Candidato: <h id='nome'></h> </span>
+            </div>
+            <div>     
+                <span> Votos: <h id='votos'></h> </span>   
+            </div>
+            <div>
+                <span> Afavor: <h id='afavor'></h> </span>  
+            </div>
+            <div>
+                <span>  Contra: <h id='contra'></h> </span>
+            </div>
+            <span>
+                Votar: 
+                <button type="button" onclick="votarSim()" >Sim</button>
+                <button type="button"onclick='votarNao()'>Não</button>
+            </span>
         </div>
-            
-        <br><br>
-        <div>
-            Candidato: <h id='nome'> 
-        </div>
-        <br></br>
-        Votos: <h id='votos'></h>
-        <br><br>
-        Afavor: <h id='afavor'></h>
-        <br><br>
-        Contra: <h id='contra'></h>
-        <br><br>
     </div>
-    <div>
-        Votar:
-        <button type="button" onclick="votarSim()" >Sim</button>
-        <button type="button"onclick='votarNao()'>Não</button>
-    </div>
-</body>
-<script>
-function load(){
-    getVotação();
-}
-async function getVotação(){
-    var url = new URL(window.location.href);
-    var id = url.searchParams.get("id");
-    var urna = null
-    let votos = await fetch(`http://26.92.70.44:3333/voto/Presidente`,{
-                method: 'GET',
-                headers: { 'value': id },
-            })
-            .then((res) => res.json())
-            .then((data) => urna = data)
-            .catch((err) => console.log(err));
-        console.log(urna)
     
-    document.getElementById("votos").innerHTML = urna.Votos; 
-    document.getElementById("nome").innerHTML = urna.Candidato; 
-    document.getElementById("afavor").innerHTML = urna.Afavor; 
-    document.getElementById("contra").innerHTML = urna.Contra; 
-}  
-
-async function votarSim(){
-    var url = new URL(window.location.href);
-    var id = url.searchParams.get("id");
-
-    const form = {
-        "voto":1,
-        "eleitor": localStorage.id,
-        "urna":id
-      }
-    await fetch(`http://26.92.70.44:3333/voto/Presidente`,{
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form)
-            })
-            .then((res) => res.json())
-            .then((data) => voto = data)
-            .catch((err) => console.log(err));
-            window.location.reload();
-}
-
-async function votarNao(){
-    var url = new URL(window.location.href);
-    var id = url.searchParams.get("id");
-    const form = {
-        "voto":0,
-        "eleitor": localStorage.id,
-        "urna":id
-      }
-   
-    await fetch(`http://26.92.70.44:3333/voto/Presidente`,{
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form)
-            })
-            .then((res) => res.json())
-            .then((data) => voto = data)
-            .catch((err) => console.log(err));
-            window.location.reload();
-}
-
-</script>
-
+    <script>
+    function load(){
+        getVotação();
+    }
+    async function getVotação(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        var urna = null
+        let votos = await fetch(`http://localhost:3333/voto/Presidente`,{
+                    method: 'GET',
+                    headers: { 'value': id },
+                })
+                .then((res) => res.json())
+                .then((data) => urna = data)
+                .catch((err) => console.log(err));
+            console.log(urna)
+        
+        document.getElementById("votos").innerHTML = urna.Votos; 
+        document.getElementById("nome").innerHTML = urna.Candidato; 
+        document.getElementById("afavor").innerHTML = urna.Afavor; 
+        document.getElementById("contra").innerHTML = urna.Contra; 
+    }  
+    
+    async function votarSim(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+    
+        const form = {
+            "voto":1,
+            "eleitor": localStorage.id,
+            "urna":id
+          }
+        await fetch(`http://localhost:3333/voto/Presidente`,{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                })
+                .then((res) => res.json())
+                .then((data) => voto = data)
+                .catch((err) => console.log(err));
+                window.location.reload();
+                alert('Voto a favor computado, aguarde redirecionamento.')
+                window.location.href = '/Principal.html'
+    }
+    
+    async function votarNao(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        const form = {
+            "voto":0,
+            "eleitor": localStorage.id,
+            "urna":id
+          }
+       
+        await fetch(`http://localhost:3333/voto/Presidente`,{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                })
+                .then((res) => res.json())
+                .then((data) => voto = data)
+                .catch((err) => console.log(err));
+                window.location.reload();
+                alert('Voto contra computado, aguarde redirecionamento.')
+                window.location.href = '/Principal.html'
+    }
+    
+    </script>
+</body>
 </html>

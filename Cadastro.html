@@ -97,7 +97,7 @@
         "area" : area,  
       }
       console.log(form)
-      await fetch('http://26.92.70.44:3333/Pesquisador/Cadastro', {
+      await fetch('http://localhost:3333/Pesquisador/Cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

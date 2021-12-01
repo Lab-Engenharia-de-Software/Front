@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title> Área do Pesquisador </title>
 </head>
-<body onLoad='getPesquisador()'>
-    <script>
+    <!-- <script>
         if (localStorage.id == undefined) {
             alert("Login necessário!")
             window.location.href = "Login.html"
         }
-    </script>
+    </script> -->
+<body onLoad='getPesquisador()'>
     <header>
         <a href="/Principal.html" title="Voltar"><i class="far fa-arrow-alt-circle-left"></i></a> 
         <span> DADOS DO PESQUISADOR </span>
@@ -66,7 +66,7 @@
             'authorization': localStorage.cargo
         }
        
-        let account = await fetch(`http://26.92.70.44:3333/Pesquisador/user/${id}`,{
+        let account = await fetch(`http://localhost:3333/Pesquisador/user/${id}`,{
             method: 'GET',
             headers: { 'Authorization': localStorage.cargo },
         })
@@ -122,7 +122,7 @@
         const obj = {
             "value":"ativar"
             }
-            await fetch(`http://26.92.70.44:3333/Pesquisador/${id}`,{
+            await fetch(`http://localhost:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"ativar" },
             body: JSON.stringify(obj)
@@ -143,7 +143,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://26.92.70.44:3333/Pesquisador/${id}`,{
+            await fetch(`http://localhost:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"parecerista" },
             }) 
@@ -163,7 +163,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://26.92.70.44:3333/Pesquisador/${id}`,{
+            await fetch(`http://localhost:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"pesquisador" },
             }) 
@@ -183,7 +183,7 @@
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
         //window.location.href = "Validate.html?id=" + id
-            await fetch(`http://26.92.70.44:3333/Pesquisador/${id}`,{
+            await fetch(`http://localhost:3333/Pesquisador/${id}`,{
             method: 'PATCH',
             headers: { 'Authorization': localStorage.cargo, "value":"presidente" },
             }) 
@@ -202,7 +202,7 @@
     async function votacaoPresidente(){
         var url = new URL(window.location.href);
         var id = url.searchParams.get("id");
-        await fetch(`http://26.92.70.44:3333/voto/Abrir/Presidente`,{
+        await fetch(`http://localhost:3333/voto/Abrir/Presidente`,{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({"id":id})
@@ -222,7 +222,7 @@
         var id = url.searchParams.get("id");
         obj = {"id":id}
 
-        await fetch(`http://26.92.70.44:3333/Pesquisador/${id}`,{
+        await fetch(`http://localhost:3333/Pesquisador/${id}`,{
             method: 'DELETE',
             headers: { 'Authorization': localStorage.cargo },
             body: JSON.stringify(obj)
