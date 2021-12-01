@@ -44,6 +44,9 @@
                     <button type="button" onCLick="excluir()" id="excluir">CANCELAR CADASTRO</button>
                 </div>
                 <div>
+                    <button type="button" onCLick="votacaoPresidente()" id="presidente2">VOTAÇÃO A PRESIDENTE</button>
+                </div>
+                <div>
                     <button type="button" onCLick="promoverPresidente()" id="presidente">DEFINIR A PRESIDENTE</button>
                 </div>
             </div>
@@ -196,6 +199,20 @@
                 alert("erro")
             }
         }
+    async function votacaoPresidente(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+        await fetch(`http://179.232.13.8:3333/voto/Abrir/Presidente`,{
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({"id":id})
+            })
+            .then((res) => res.json())
+            .then((data) => voto = data)
+            .catch((err) => console.log(err));
+            alert('Votação aberta')
+            window.location.href = "Principal.html"
+}
     function hidden() {
         //ativar perfil de usuário
         
