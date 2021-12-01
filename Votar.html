@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="votar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title> Votação para presidente </title>
-    <!-- <script>
+    <script>
         if (localStorage.cargo == undefined) {
             alert("Acesso negado!")
             window.location.href = "/Principal.html"
         }
-    </script> -->
+    </script>
 </head>
 <body onLoad='load()'>
     <header>
@@ -28,15 +28,17 @@
                 <span> Votos: <h id='votos'></h> </span>   
             </div>
             <div>
-                <span> Afavor: <h id='afavor'></h> </span>  
+                <span> A favor: <h id='afavor'></h> </span>  
             </div>
             <div>
                 <span>  Contra: <h id='contra'></h> </span>
             </div>
             <span>
-                Votar: 
-                <button type="button" onclick="votarSim()" >Sim</button>
-                <button type="button"onclick='votarNao()'>Não</button>
+                <div > Opções </div>
+                <div class="wrapper-btn">
+                    <button type="button" onclick="votarSim()" > A favor </button>
+                    <button type="button"onclick='votarNao()'> Contra </button>
+                </div>
             </span>
         </div>
     </div>

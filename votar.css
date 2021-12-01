@@ -32,9 +32,10 @@ header span{
 /* CONTEÚDO */
 .container{
     width: 100%;
-    /* height: 100vh; */
+    height: 90vh;
 }
 .container .wrapper-content{
+    margin-top: 20%;
     padding: 0 3%;
     display: flex;
     align-items: left;
@@ -59,6 +60,13 @@ header span{
     border-radius: 3px;
     background-color: #24ae8f;
 }
+.wrapper-content .wrapper-btn{
+    margin-top: 10px;
+    background-color: #9e9e9e54;
+    display: flex;  
+    justify-content: center;
+    flex-direction: row;
+}
 @media screen and (min-width: 768px){
     header i{
         top: 30%;
@@ -68,5 +76,26 @@ header span{
     
     header span{
         display: initial;
+    }
+    /* CONTEÚDO */
+    .container{
+        display: flex;  
+        justify-content: center;
+    }
+    .container .wrapper-content div{
+        margin: 10px;
+        width: 100%;
+    }
+    .container .wrapper-content{
+        width: 80%;
+        margin: 10% 0 0 0;
+        flex-direction: row;
+    }
+    .container{
+        height: auto;
+    }
+    .wrapper-content .wrapper-btn{
+        width: 10%;
+        background-color: transparent;
     }
 }
